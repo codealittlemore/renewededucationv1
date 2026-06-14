@@ -1,0 +1,13 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/programs", "destination": "/programs.html" },
+    { "source": "/stories", "destination": "/stories.html" },
+    { "source": "/donate", "destination": "/donate.html" },
+    { "source": "/get-involved", "destination": "/get-involved.html" },
+    { "source": "/news", "destination": "/news.html" },
+    { "source": "/contact", "destination": "/contact.html" }
+  ]
+}
