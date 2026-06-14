@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RECI — Renewing Minds, Shaping Futures</title>
+<meta name="description" content="Renewed Education for Children Initiative helps young people in Nigeria build the confidence, character and purpose to lead — through education, mentorship, scholarships, life skills and protection.">
+<link rel="icon" type="image/png" href="assets/reci-mark.png">
+<link rel="stylesheet" href="reci.css">
+<style>
+/* ============ HOME-SPECIFIC ============ */
+
+/* Hero — full-bleed photo */
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;z-index:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%;}
+.hero-scrim{position:absolute;inset:0;background:
+  linear-gradient(90deg,rgba(34,36,63,.92) 0%,rgba(34,36,63,.72) 44%,rgba(34,36,63,.30) 72%,rgba(34,36,63,.14) 100%),
+  linear-gradient(0deg,rgba(34,36,63,.60),rgba(34,36,63,0) 46%);}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr;gap:0;align-items:center;padding:clamp(80px,10vw,120px) 0 clamp(100px,12vw,150px);}
+.hero-copy{max-width:640px;}
+.hero-badge{display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:100px;padding:.5rem 1.1rem;font-weight:600;font-size:.86rem;color:rgba(255,255,255,.92);backdrop-filter:blur(6px);margin-bottom:28px;white-space:nowrap;max-width:100%;}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(0,168,90,.35);}
+.hero-badge b{color:#fff;}
+.hero h1{font-size:clamp(2.8rem,1.2rem + 5.5vw,5.4rem);line-height:.96;letter-spacing:-.035em;margin-bottom:1.4rem;color:#fff;}
+.hero h1 .renew{color:var(--blue);}
+.hero h1 .shape{color:#FBC02D;}
+.hero-sub{font-size:clamp(1.05rem,.98rem + .5vw,1.22rem);color:rgba(255,255,255,.82);max-width:48ch;margin-bottom:2.2rem;line-height:1.6;}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+.hero-meta{display:flex;gap:32px;margin-top:44px;flex-wrap:wrap;}
+.hero-meta .m b{font-family:var(--font-display);font-size:1.9rem;font-weight:800;color:#fff;display:block;line-height:1;}
+.hero-meta .m span{font-size:.85rem;color:rgba(255,255,255,.68);font-weight:500;}
+.hero-meta .m-div{width:1px;background:rgba(255,255,255,.2);align-self:stretch;}
+
+/* Floating stats card */
+.hero-stats-card{position:absolute;z-index:3;bottom:32px;right:max(32px,calc((100vw - 1340px)/2 + 32px));display:flex;align-items:center;gap:22px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);padding:20px 30px;border-radius:var(--r-lg);box-shadow:var(--shadow-lg);}
+.hsc-item{display:flex;flex-direction:column;}
+.hsc-item strong{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--navy);line-height:1;}
+.hsc-item span{font-size:.8rem;color:var(--slate);margin-top:4px;font-weight:500;}
+.hsc-div{width:1px;height:38px;background:var(--line);}
+
+/* trust strip */
+.trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper-2);}
+.trust .container{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-top:26px;padding-bottom:26px;}
+.trust .label{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--slate-light);font-weight:700;}
+.trust .logos{display:flex;gap:38px;flex-wrap:wrap;align-items:center;}
+.trust .logos span{font-family:var(--font-display);font-weight:700;color:var(--slate-light);font-size:1.05rem;letter-spacing:-.01em;opacity:.8;}
+
+/* challenge */
+.challenge-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,72px);align-items:center;}
+.challenge-stats{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.cstat{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;}
+.cstat .n{font-family:var(--font-display);font-weight:800;font-size:clamp(2.2rem,1.6rem+1.4vw,3rem);line-height:1;letter-spacing:-.03em;}
+.cstat:nth-child(1) .n{color:var(--blue-700);}
+.cstat:nth-child(2) .n{color:var(--gold-600);}
+.cstat:nth-child(3) .n{color:var(--green-700);}
+.cstat:nth-child(4) .n{color:var(--navy);}
+.cstat p{font-size:.95rem;color:var(--slate);margin:.5rem 0 0;}
+
+/* journey 3-step — image-card style */
+.journey3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.step{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s;}
+.step:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);}
+.step-img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;}
+.step-body{padding:22px 24px 28px;display:flex;flex-direction:column;flex:1;}
+.step-meta{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.step-badge{display:inline-flex;align-items:center;padding:.3rem .8rem;border-radius:7px;font-size:.78rem;font-weight:700;color:#fff;}
+.step-badge.b-blue{background:var(--blue);}
+.step-badge.b-gold{background:var(--gold);color:var(--navy);}
+.step-badge.b-green{background:var(--green);}
+.step h3{font-size:1.22rem;margin:0 0 .5rem;line-height:1.3;}
+.step p{color:var(--slate);font-size:.94rem;margin:0;line-height:1.55;flex:1;}
+
+/* impact areas — prog-card style (image + floating icon + body + arrow link) */
+.impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+.impact-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;}
+.impact-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:rgba(0,175,240,.2);}
+.impact-card .ic-photo{position:relative;}
+.impact-card .ic-photo img{display:block;width:100%;height:168px;object-fit:cover;}
+.impact-card .ic-photo-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(34,36,63,0) 50%,rgba(34,36,63,.38));pointer-events:none;}
+.impact-card .ic-tag{position:absolute;top:14px;right:14px;z-index:2;background:var(--gold);color:var(--navy);font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:5px 11px;border-radius:100px;box-shadow:var(--shadow-sm);}
+.impact-card .ic-icon{position:absolute;left:18px;bottom:-22px;z-index:2;width:50px;height:50px;border-radius:14px;background:#fff;color:var(--blue-700);display:grid;place-items:center;box-shadow:var(--shadow);transition:background .22s,color .22s;}
+.impact-card .ic-icon svg{width:24px;height:24px;}
+.impact-card:hover .ic-icon{background:var(--blue);color:#fff;}
+.impact-card.ic-green .ic-icon{color:var(--green-700);}
+.impact-card.ic-green:hover .ic-icon{background:var(--green);color:#fff;}
+.impact-card.ic-gold .ic-icon{color:var(--gold-600);}
+.impact-card.ic-gold:hover .ic-icon{background:var(--gold);color:var(--navy);}
+.impact-card.ic-navy .ic-icon{color:var(--navy-600);}
+.impact-card.ic-navy:hover .ic-icon{background:var(--navy);color:#fff;}
+.impact-card .ic-body{padding:34px 22px 24px;display:flex;flex-direction:column;flex:1;}
+.impact-card h3{font-size:1.1rem;margin:0 0 .5rem;line-height:1.3;}
+.impact-card p{font-size:.9rem;color:var(--slate);margin:0 0 16px;line-height:1.55;flex:1;}
+.impact-card .ic-link{display:inline-flex;align-items:center;gap:.4rem;font-weight:700;font-size:.9rem;color:var(--blue-700);border:1.5px solid var(--line);border-radius:100px;padding:.4rem 1rem;transition:border-color .2s,color .2s;}
+.impact-card .ic-link svg{width:15px;height:15px;transition:transform .2s;}
+.impact-card:hover .ic-link{border-color:var(--blue);color:var(--blue-700);}
+.impact-card:hover .ic-link svg{transform:translateX(3px);}
+.impact-card.ic-green .ic-link{color:var(--green-700);}
+.impact-card.ic-green:hover .ic-link{border-color:var(--green);}
+.impact-card.ic-gold .ic-link{color:var(--gold-600);}
+.impact-card.ic-gold:hover .ic-link{border-color:var(--gold);}
+.impact-card.ic-navy .ic-link{color:var(--navy-600);}
+.impact-card.ic-navy:hover .ic-link{border-color:var(--navy);}
+
+/* full-bleed final CTA */
+.final-cta-bg{position:relative;overflow:hidden;min-height:480px;display:flex;align-items:center;}
+.final-cta-bg img.cta-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;}
+.final-cta-bg .cta-scrim{position:absolute;inset:0;background:linear-gradient(0deg,rgba(11,51,37,.88) 0%,rgba(11,51,37,.72) 50%,rgba(11,51,37,.62) 100%);}
+.final-cta-bg .cta-inner{position:relative;z-index:2;text-align:center;padding:clamp(64px,9vw,110px) 0;max-width:780px;margin:0 auto;}
+.final-cta-bg .cta-kicker{display:inline-flex;align-items:center;gap:.6rem;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--gold);margin-bottom:20px;}
+.final-cta-bg .cta-kicker::before{content:"";width:26px;height:2px;border-radius:2px;background:var(--gold);}
+.final-cta-bg h2{font-size:clamp(2rem,1.2rem+3.2vw,3.4rem);color:#fff;margin:0 0 1.1rem;line-height:1.1;}
+.final-cta-bg p{font-size:1.1rem;color:rgba(255,255,255,.78);max-width:54ch;margin:0 auto 2.2rem;line-height:1.6;}
+.final-cta-bg .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn--cta-gold{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;font-weight:700;font-size:1.05rem;padding:1rem 2rem;border-radius:100px;border:none;background:var(--gold);color:var(--navy);cursor:pointer;transition:background .2s,transform .2s;}
+.btn--cta-gold:hover{background:var(--gold-600);transform:translateY(-2px);}
+.btn--cta-ghost{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;font-weight:700;font-size:1.05rem;padding:1rem 2rem;border-radius:100px;border:2px solid rgba(255,255,255,.45);background:transparent;color:#fff;cursor:pointer;transition:border-color .2s,transform .2s;}
+.btn--cta-ghost:hover{border-color:#fff;transform:translateY(-2px);}
+
+/* Amina journey timeline */
+.amina{background:var(--navy);color:#fff;overflow:hidden;}
+.amina .blob-a{width:600px;height:600px;background:radial-gradient(circle,rgba(0,175,240,.22),transparent 70%);top:-200px;left:-160px;}
+.amina .blob-b{width:520px;height:520px;background:radial-gradient(circle,rgba(251,192,45,.14),transparent 70%);bottom:-220px;right:-120px;}
+.amina-head{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:end;margin-bottom:60px;position:relative;z-index:2;}
+.amina-head .lede{color:#b9bdd8;}
+.amina-portrait{position:relative;}
+.amina-portrait .ph{width:100%;aspect-ratio:5/4;border-radius:var(--r-xl);box-shadow:var(--shadow-lg);}
+.amina-portrait .tag{position:absolute;left:20px;bottom:20px;background:rgba(255,255,255,.95);color:var(--navy);border-radius:100px;padding:.5rem 1rem;font-weight:700;font-size:.86rem;backdrop-filter:blur(6px);}
+.timeline{position:relative;max-width:920px;margin:0 auto;z-index:2;}
+.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;transform:translateX(-50%);background:linear-gradient(var(--blue),var(--gold) 50%,var(--green));border-radius:3px;opacity:.5;}
+.tnode{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:6px;padding:18px 0;}
+.tnode .tcard{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:22px 24px;backdrop-filter:blur(4px);}
+.tnode .tcard h4{color:#fff;font-size:1.12rem;margin-bottom:.4rem;}
+.tnode .tcard p{color:#b9bdd8;font-size:.94rem;margin:0;}
+.tnode .tstep{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:.6rem;display:block;}
+.tnode:nth-child(odd) .tcard{grid-column:1;text-align:right;}
+.tnode:nth-child(even) .tcard{grid-column:2;}
+.tnode .dot{position:absolute;left:50%;top:32px;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;background:#fff;border:4px solid var(--navy);box-shadow:0 0 0 3px var(--blue);z-index:2;}
+.tnode:nth-child(2) .dot{box-shadow:0 0 0 3px var(--blue);}
+.tnode:nth-child(3) .dot{box-shadow:0 0 0 3px var(--gold);}
+.tnode:nth-child(4) .dot{box-shadow:0 0 0 3px var(--gold);}
+.tnode:nth-child(5) .dot{box-shadow:0 0 0 3px var(--green);}
+.tnode:nth-child(6) .dot{box-shadow:0 0 0 3px var(--green);}
+.tnode:nth-child(7) .dot{background:var(--gold);box-shadow:0 0 0 3px var(--gold),0 0 24px var(--gold);}
+.tnode .tstep{color:var(--blue);}
+.tnode:nth-child(3) .tstep,.tnode:nth-child(4) .tstep{color:var(--gold);}
+.tnode:nth-child(5) .tstep,.tnode:nth-child(6) .tstep,.tnode:nth-child(7) .tstep{color:var(--green);}
+
+/* success stories */
+.story-feature{display:grid;grid-template-columns:1.05fr 1fr;gap:0;background:#fff;border:1px solid var(--line);border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow);}
+.story-feature .ph{width:100%;height:100%;min-height:440px;}
+.story-feature .body{padding:clamp(32px,4vw,56px);display:flex;flex-direction:column;justify-content:center;}
+.quote-mark{font-family:var(--font-serif);font-style:italic;font-size:4rem;color:var(--blue-tint-2);line-height:.6;height:34px;}
+.story-feature blockquote{font-family:var(--font-serif);font-style:italic;font-size:clamp(1.4rem,1rem+1.2vw,2rem);line-height:1.3;color:var(--navy);margin:0 0 24px;font-weight:500;}
+.story-feature .who{display:flex;align-items:center;gap:14px;}
+.story-feature .who .av{width:52px;height:52px;border-radius:50%;}
+.story-feature .who b{display:block;color:var(--navy);font-family:var(--font-display);font-weight:700;}
+.story-feature .who span{font-size:.88rem;color:var(--slate);}
+.story-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:28px;}
+.smini{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;transition:transform .3s,box-shadow .3s;}
+.smini:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);}
+.smini .ph{width:100%;aspect-ratio:3/2;}
+.smini .c{padding:22px 24px 26px;}
+.smini .c .pill{margin-bottom:12px;}
+.smini h4{font-size:1.12rem;margin-bottom:.4rem;}
+.smini p{font-size:.92rem;color:var(--slate);margin:0;}
+
+/* mission vision */
+.mv-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.mv{border-radius:var(--r-xl);padding:clamp(32px,4vw,52px);position:relative;overflow:hidden;}
+.mv.mission{background:linear-gradient(135deg,var(--blue),var(--blue-700));color:#fff;}
+.mv.vision{background:linear-gradient(135deg,var(--green),var(--green-700));color:#fff;}
+.mv h3{color:#fff;font-size:1.5rem;margin-bottom:1rem;}
+.mv p{font-size:1.12rem;line-height:1.6;color:rgba(255,255,255,.94);margin:0;}
+.mv .eyebrow{color:rgba(255,255,255,.85);}
+.mv .eyebrow::before{background:rgba(255,255,255,.6);}
+.mv .mv-icon{position:absolute;right:-30px;bottom:-30px;opacity:.16;width:200px;}
+
+/* stats band */
+.stats-band{background:var(--paper-3);}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.stat-card{text-align:center;padding:32px 20px;}
+.stat-card .stat-num{font-size:clamp(2.6rem,1.8rem+2vw,3.8rem);}
+.stat-card:nth-child(6n+1) .stat-num{color:var(--blue-700);}
+.stat-card:nth-child(6n+2) .stat-num{color:var(--green-700);}
+.stat-card:nth-child(6n+3) .stat-num{color:var(--gold-600);}
+.stat-card:nth-child(6n+4) .stat-num{color:var(--navy);}
+.stat-card:nth-child(6n+5) .stat-num{color:var(--blue-700);}
+.stat-card:nth-child(6n+6) .stat-num{color:var(--green-700);}
+.stat-card p{margin:.6rem 0 0;color:var(--slate);font-weight:600;}
+
+/* get involved */
+.gi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.gi-card{position:relative;border-radius:var(--r-lg);padding:30px;color:#fff;overflow:hidden;min-height:230px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .3s;}
+.gi-card:hover{transform:translateY(-6px);}
+.gi-card.g1{background:linear-gradient(160deg,var(--blue),var(--blue-700));}
+.gi-card.g2{background:linear-gradient(160deg,var(--green),var(--green-700));}
+.gi-card.g3{background:linear-gradient(160deg,var(--gold),var(--gold-600));color:var(--navy);}
+.gi-card.g4{background:linear-gradient(160deg,var(--navy-600),var(--navy));}
+.gi-card .icon-badge{background:rgba(255,255,255,.18);color:#fff;}
+.gi-card.g3 .icon-badge{background:rgba(34,36,63,.14);color:var(--navy);}
+.gi-card h3{color:inherit;font-size:1.3rem;margin:0 0 .4rem;}
+.gi-card p{font-size:.92rem;opacity:.92;margin:0 0 16px;}
+.gi-card .go{display:inline-flex;align-items:center;gap:.4rem;font-weight:700;font-size:.92rem;}
+.gi-card .go svg{width:18px;height:18px;transition:transform .25s;}
+.gi-card:hover .go svg{transform:translateX(4px);}
+
+/* news */
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.news-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;}
+.news-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);}
+.news-card .ph{width:100%;aspect-ratio:16/10;}
+.news-card .c{padding:26px 26px 28px;display:flex;flex-direction:column;flex:1;}
+.news-meta{display:flex;gap:12px;align-items:center;font-size:.86rem;color:var(--slate);font-weight:600;margin-bottom:14px;}
+.news-meta .cal{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;}
+.news-meta .cal svg{width:16px;height:16px;color:var(--slate-light);}
+.cat-badge{display:inline-flex;align-items:center;padding:.3rem .72rem;border-radius:7px;font-size:.78rem;font-weight:700;color:#fff;}
+.cat-badge.b-blue{background:var(--blue);}
+.cat-badge.b-green{background:var(--green);}
+.cat-badge.b-gold{background:var(--gold);color:var(--navy);}
+.cat-badge.b-navy{background:var(--navy-600);}
+.news-card h4{font-size:1.22rem;margin-bottom:.55rem;line-height:1.3;font-weight:700;transition:color .2s;}
+.news-card:hover h4{color:var(--blue-700);}
+.news-card p{font-size:.94rem;color:var(--slate);margin:0;flex:1;}
+
+/* final cta */
+.final-cta{position:relative;overflow:hidden;background:var(--navy);color:#fff;border-radius:var(--r-xl);padding:clamp(48px,7vw,96px) clamp(28px,5vw,80px);text-align:center;}
+.final-cta .blob-c{width:520px;height:520px;background:radial-gradient(circle,rgba(0,175,240,.30),transparent 70%);top:-200px;left:50%;transform:translateX(-50%);}
+.final-cta h2{font-size:clamp(2rem,1.2rem+3vw,3.6rem);color:#fff;margin-bottom:1.2rem;position:relative;z-index:2;}
+.final-cta p{font-size:1.2rem;color:#c5c9e4;max-width:60ch;margin:0 auto 2.2rem;position:relative;z-index:2;}
+.final-cta .hero-cta{justify-content:center;position:relative;z-index:2;}
+
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-visual{max-width:520px;margin:0 auto;}
+  .challenge-grid{grid-template-columns:1fr;}
+  .journey3{grid-template-columns:1fr;}
+  .impact-grid{grid-template-columns:repeat(2,1fr);}
+  .amina-head{grid-template-columns:1fr;gap:28px;}
+  .timeline::before{left:18px;}
+  .tnode{grid-template-columns:1fr;gap:0;padding-left:48px;}
+  .tnode .tcard,.tnode:nth-child(odd) .tcard,.tnode:nth-child(even) .tcard{grid-column:1;text-align:left;}
+  .tnode .dot{left:18px;}
+  .story-feature{grid-template-columns:1fr;}
+  .story-feature .ph{min-height:280px;}
+  .story-mini{grid-template-columns:1fr;}
+  .mv-grid{grid-template-columns:1fr;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .gi-grid{grid-template-columns:repeat(2,1fr);}
+  .news-grid{grid-template-columns:1fr;}
+}
+@media (max-width:760px){
+  .hero-stats-card{position:static;margin:-40px 24px 0;right:auto;justify-content:space-between;gap:12px;padding:16px 18px;}
+  .hero{min-height:auto;}
+}
+@media (max-width:560px){
+  .impact-grid,.stats-grid,.gi-grid{grid-template-columns:1fr;}
+  .hero-meta{gap:18px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="container wide">
+    <nav class="nav">
+      <a class="brand" href="index.html" aria-label="RECI home">
+        <img src="assets/reci-mark.png" alt="RECI">
+        <div class="brand-text"><b>RECI</b><span>Renewed Education for Children Initiative</span></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="stories.html">Impact</a></li>
+        <li><a href="get-involved.html">Get Involved</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="donate.html" class="btn btn--primary nav-cta-keep">Support a Child</a>
+        <button class="nav-toggle" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- mobile menu -->
+<div class="mobile-menu">
+  <div class="mm-top">
+    <a class="brand" href="index.html"><img src="assets/reci-mark.png" alt="RECI" style="height:40px"><div class="brand-text"><b>RECI</b><span>Renewed Education</span></div></a>
+    <button class="mm-close" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="programs.html">Programs</a>
+  <a href="stories.html">Impact</a>
+  <a href="get-involved.html">Get Involved</a>
+  <a href="news.html">News</a>
+  <a href="contact.html">Contact</a>
+  <a href="donate.html" class="btn btn--primary btn--block" style="margin-top:20px;font-size:1.1rem">Support a Child</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.pexels.com/photos/8364026/pexels-photo-8364026.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Children raising their hands eagerly in a classroom">
+    <div class="hero-scrim"></div>
+  </div>
+  <div class="container wide" style="width:100%;">
+    <div class="hero-grid">
+      <div class="hero-copy reveal">
+        <div class="hero-badge"><span class="dot"></span>A movement for <b>young leaders</b> across Nigeria</div>
+        <h1>Renewing <span class="renew">Minds.</span><br><span class="shape">Shaping Futures.</span></h1>
+        <p class="hero-sub">Every child carries untapped potential. Through education, mentorship, scholarships, life skills and protection, we help young people build the confidence, character and purpose to create a brighter future.</p>
+        <div class="hero-cta">
+          <a href="donate.html" class="btn btn--primary btn--lg">Support a Child
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="stories.html" class="btn btn--ghost btn--lg" style="color:#fff;border-color:rgba(255,255,255,.4);">Explore Our Impact</a>
+        </div>
+        <div class="hero-meta">
+          <div class="m"><b>12,400+</b><span>Children supported</span></div>
+          <div class="m-div"></div>
+          <div class="m"><b>38</b><span>Communities reached</span></div>
+          <div class="m-div"></div>
+          <div class="m"><b>9</b><span>Years of impact</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-stats-card">
+    <div class="hsc-item"><strong>2,300+</strong><span>Scholarships awarded</span></div>
+    <div class="hsc-div"></div>
+    <div class="hsc-item"><strong>132</strong><span>Schools supported</span></div>
+    <div class="hsc-div"></div>
+    <div class="hsc-item"><strong>94%</strong><span>Stay enrolled</span></div>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<div class="trust">
+  <div class="container wide">
+    <span class="label">In partnership with</span>
+    <div class="logos">
+      <span>State Ministries of Education</span>
+      <span>UNICEF Nigeria</span>
+      <span>Community Schools Network</span>
+      <span>Corporate Partners</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ THE CHALLENGE ============ -->
+<section class="section">
+  <div class="container">
+    <div class="challenge-grid">
+      <div class="reveal">
+        <span class="eyebrow">The Challenge</span>
+        <h2 class="section-title" style="margin:14px 0 18px">Talent is everywhere.<br>Opportunity is not.</h2>
+        <p class="lede" style="margin-bottom:20px">Across Nigeria, millions of bright, capable children are kept from learning — not by a lack of ability, but by a lack of access. The gap isn't potential. It's opportunity.</p>
+        <p style="color:var(--slate)">RECI exists to close that gap — meeting children where they are, and walking with them from the classroom to confident leadership. This is a story of what's possible, not a portrait of what's lacking.</p>
+      </div>
+      <div class="challenge-stats reveal" data-delay="2">
+        <div class="cstat"><div class="n">1 in 3</div><p>school-age children in Nigeria are out of school</p></div>
+        <div class="cstat"><div class="n">60%</div><p>of out-of-school children are girls</p></div>
+        <div class="cstat"><div class="n">12.4M</div><p>children lack basic learning resources</p></div>
+        <div class="cstat"><div class="n">Rising</div><p>youth vulnerability to exploitation &amp; negative influence</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW RECI CREATES CHANGE ============ -->
+<section class="section bg-paper-2">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow is-center center-line" style="justify-content:center">How RECI creates change</span>
+      <h2 class="section-title" style="margin-top:14px">A journey from access to leadership</h2>
+      <p class="lede center">Lasting transformation isn't a single hand-out. It's a path we walk with every child — three stages, one outcome.</p>
+    </div>
+    <div class="journey3">
+      <div class="step reveal">
+        <img class="step-img" src="https://images.pexels.com/photos/8500356/pexels-photo-8500356.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Children reading together">
+        <div class="step-body">
+          <div class="step-meta"><span class="step-badge b-blue">Stage 01</span></div>
+          <h3>Access</h3>
+          <p>We help children get into school — and stay there — with enrolment support, learning materials and the safety to keep showing up.</p>
+        </div>
+      </div>
+      <div class="step reveal" data-delay="2">
+        <img class="step-img" src="https://images.pexels.com/photos/3769981/pexels-photo-3769981.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mentor working with students">
+        <div class="step-body">
+          <div class="step-meta"><span class="step-badge b-gold">Stage 02</span></div>
+          <h3>Growth</h3>
+          <p>Mentorship, values, life skills and academic support nurture each child's mind and character so they grow with purpose.</p>
+        </div>
+      </div>
+      <div class="step reveal" data-delay="3">
+        <img class="step-img" src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80" alt="Young leaders in the classroom">
+        <div class="step-body">
+          <div class="step-meta"><span class="step-badge b-green">Stage 03</span></div>
+          <h3>Leadership</h3>
+          <p>Young people emerge confident, responsible and purpose-driven — ready to lead, and to lift others as they rise.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IMPACT AREAS ============ -->
+<section class="section" id="impact">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow is-green is-center" style="justify-content:center">Our impact areas</span>
+      <h2 class="section-title" style="margin-top:14px">Eight ways we walk with a child</h2>
+      <p class="lede center">A complete circle of support — because no single intervention raises a leader.</p>
+    </div>
+    <div class="impact-grid">
+      <div class="impact-card reveal">
+        <div class="ic-photo">
+          <img src="https://images.pexels.com/photos/8364026/pexels-photo-8364026.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Education Access">
+          <div class="ic-photo-scrim"></div>
+          <span class="ic-tag">Most needed</span>
+          <div class="ic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+        </div>
+        <div class="ic-body">
+          <h3>Education Access</h3>
+          <p>Ensuring every child has the opportunity to be in school — and to keep going.</p>
+          <a href="programs.html" class="ic-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="impact-card ic-green reveal" data-delay="1">
+        <div class="ic-photo">
+          <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600&q=80" alt="Learning Materials">
+          <div class="ic-photo-scrim"></div>
+          <div class="ic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h7a3 3 0 0 1 3 3v13a2.5 2.5 0 0 0-2.5-2.5H2zM22 4h-7a3 3 0 0 0-3 3v13a2.5 2.5 0 0 1 2.5-2.5H22z"/></svg></div>
+        </div>
+        <div class="ic-body">
+          <h3>Learning Materials</h3>
+          <p>Books, supplies and educational resources placed in eager hands.</p>
+          <a href="programs.html" class="ic-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="impact-card ic-gold reveal" data-delay="2">
+        <div class="ic-photo">
+          <img src="https://images.unsplash.com/photo-1594608661623-aa0bd3a69d98?auto=format&fit=crop&w=600&q=80" alt="Scholarships">
+          <div class="ic-photo-scrim"></div>
+          <div class="ic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+        </div>
+        <div class="ic-body">
+          <h3>Scholarships</h3>
+          <p>Supporting school enrolment and retention so finances never end a future.</p>
+          <a href="programs.html" class="ic-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="impact-card ic-navy reveal" data-delay="3">
+        <div class="ic-photo">
+          <img src="https://images.pexels.com/photos/3769981/pexels-photo-3769981.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Skills Development">
+          <div class="ic-photo-scrim"></div>
+          <div class="ic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/></svg></div>
+        </div>
+        <div class="ic-body">
+          <h3>Skills Development</h3>
+          <p>Equipping young people with valuable life and career-ready skills.</p>
+          <a href="programs.html" class="ic-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="impact-card reveal">
+        <div class="ic-photo">
+          <img src="https://images.pexels.com/photos/8500356/pexels-photo-8500356.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Mentorship">
+          <div class="ic-photo-scrim"></div>
+          <div class="ic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+        </div>
+        <div class="ic-body">
+          <h3>Mentorship</h3>
+          <p>Guidance and positive role models who believe in every child.</p>
+          <a href="programs.html" class="ic-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="impact-card ic-green reveal" data-delay="1">
+        <div class="ic-photo">
+          <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=600&q=80" alt="Child Protection">
+          <div class="ic-photo-scrim"></div>
+          <div class="ic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 11 2 2 4-4"/></svg></div>
+        </div>
+        <div class="ic-body">
+          <h3>Child Protection</h3>
+          <p>Shielding children from abuse, violence, exploitation and trafficking.</p>
+          <a href="programs.html" class="ic-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="impact-card ic-gold reveal" data-delay="2">
+        <div class="ic-photo">
+          <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=600&q=80" alt="Character Development">
+          <div class="ic-photo-scrim"></div>
+          <div class="ic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="m8.5 12.5 2 2 5-5"/></svg></div>
+        </div>
+        <div class="ic-body">
+          <h3>Character Development</h3>
+          <p>Building integrity, confidence and sound judgement from within.</p>
+          <a href="programs.html" class="ic-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="impact-card ic-navy reveal" data-delay="3">
+        <div class="ic-photo">
+          <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80" alt="Leadership Development">
+          <div class="ic-photo-scrim"></div>
+          <div class="ic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V4a1 1 0 0 1 1-1h11l-2 4 2 4H5"/><path d="M4 22h4"/></svg></div>
+        </div>
+        <div class="ic-body">
+          <h3>Leadership Development</h3>
+          <p>Preparing confident, purpose-driven changemakers for tomorrow.</p>
+          <a href="programs.html" class="ic-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="center reveal" style="margin-top:40px">
+      <a href="programs.html" class="btn btn--ghost btn--lg">See all our programs
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta-bg">
+  <img class="cta-bg-img" src="https://images.pexels.com/photos/1720186/pexels-photo-1720186.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Children smiling together">
+  <div class="cta-scrim"></div>
+  <div class="container" style="width:100%;position:relative;z-index:2;">
+    <div class="cta-inner reveal">
+      <span class="cta-kicker">The next child is waiting</span>
+      <h2>A future can change today.<br>Will you help turn the page?</h2>
+      <p>Your support puts a child back in the classroom — with the books, teachers, and belief they need to thrive.</p>
+      <div class="cta-btns">
+        <a href="donate.html" class="btn--cta-gold">Donate now</a>
+        <a href="get-involved.html" class="btn--cta-ghost">Other ways to help</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container wide">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/reci-logo-full.png" alt="Renewed Education for Children Initiative" style="height:84px;background:#fff;padding:10px 14px;border-radius:14px">
+        <p style="margin-top:18px;max-width:34ch;color:#9499bd">Renewing minds, inspiring hope, and equipping young people to lead positive change across Nigeria and Africa.</p>
+        <div class="social-row" style="margin-top:20px">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7.5 8.6L22 22h-6.8l-5-6.5L4.4 22H1.4l8-9.2L2 2h6.9l4.5 6z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM0 8h5v16H0zM7.5 8H12v2.2h.1c.6-1.1 2.1-2.3 4.3-2.3 4.6 0 5.5 3 5.5 6.9V24h-5v-7.3c0-1.7 0-4-2.4-4s-2.8 1.9-2.8 3.9V24h-5z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V5h-3c-2.2 0-4 1.8-4 4v2H7v4h3v8h4v-8h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="about.html">About Us</a>
+        <a href="programs.html">Programs</a>
+        <a href="stories.html">Impact &amp; Stories</a>
+        <a href="news.html">News &amp; Events</a>
+      </div>
+      <div>
+        <h4>Get Involved</h4>
+        <a href="donate.html">Donate</a>
+        <a href="get-involved.html">Volunteer</a>
+        <a href="get-involved.html">Become a Mentor</a>
+        <a href="get-involved.html">Partner With Us</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="mailto:hello@reci.org">hello@reci.org</a>
+        <a href="tel:+2348000000000">+234 800 000 0000</a>
+        <a href="contact.html">Lagos, Nigeria</a>
+        <a href="donate.html" class="btn btn--primary" style="margin-top:16px;color:#fff;display:inline-flex">Support a Child</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Renewed Education for Children Initiative. All rights reserved.</span>
+      <span>Renewing Minds, Shaping Futures.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="reci.js"></script>
+</body>
+</html>

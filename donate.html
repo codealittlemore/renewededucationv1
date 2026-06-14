@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donate — RECI</title>
+<meta name="description" content="Support a child's education, mentorship and future. Give once or monthly — your gift renews a mind and shapes a future.">
+<link rel="icon" type="image/png" href="assets/reci-mark.png">
+<link rel="stylesheet" href="reci.css">
+<style>
+.page-hero{padding:clamp(40px,6vw,72px) 0 clamp(20px,3vw,36px);position:relative;overflow:hidden;}
+.page-hero .blob-1{width:520px;height:520px;background:radial-gradient(circle,rgba(0,175,240,.22),transparent 70%);top:-200px;right:-120px;}
+.page-hero .blob-2{width:420px;height:420px;background:radial-gradient(circle,rgba(0,168,90,.16),transparent 70%);bottom:-220px;left:-160px;}
+.page-hero .inner{position:relative;z-index:2;max-width:760px;}
+.page-hero h1{font-size:clamp(2.4rem,1.4rem+3.4vw,4rem);letter-spacing:-.03em;margin:16px 0 18px;}
+
+.donate-layout{display:grid;grid-template-columns:1.25fr .85fr;gap:32px;align-items:start;}
+
+/* widget */
+.donate-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-xl);box-shadow:var(--shadow-lg);padding:clamp(24px,3vw,40px);position:sticky;}
+.steps-ind{display:flex;align-items:center;gap:10px;margin-bottom:28px;}
+.steps-ind .s{display:flex;align-items:center;gap:10px;color:var(--slate-light);font-weight:700;font-size:.82rem;}
+.steps-ind .s .num{width:26px;height:26px;border-radius:50%;background:var(--paper-3);display:grid;place-items:center;font-size:.8rem;transition:.3s;}
+.steps-ind .s.active{color:var(--blue-700);}
+.steps-ind .s.active .num{background:var(--blue);color:#fff;}
+.steps-ind .s.done .num{background:var(--green);color:#fff;}
+.steps-ind .line{flex:1;height:2px;background:var(--line);border-radius:2px;}
+
+.step-pane{display:none;}
+.step-pane.active{display:block;animation:fade .4s ease;}
+@keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+
+.seg{display:flex;background:var(--paper-3);border-radius:100px;padding:5px;gap:4px;}
+.seg button{flex:1;border:none;background:transparent;padding:.7rem 1rem;border-radius:100px;font-weight:700;font-size:.95rem;color:var(--slate);transition:.25s;}
+.seg button.on{background:#fff;color:var(--navy);box-shadow:var(--shadow-sm);}
+.seg.small{display:inline-flex;width:auto;}
+.seg.small button{flex:none;padding:.5rem 1.1rem;}
+
+.field-label{font-weight:700;color:var(--navy);font-size:.92rem;margin:24px 0 12px;display:flex;justify-content:space-between;align-items:center;}
+.tiers{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.tier{position:relative;border:2px solid var(--line);background:#fff;border-radius:var(--r);padding:18px;text-align:left;cursor:pointer;transition:.2s;}
+.tier:hover{border-color:var(--blue-tint-2);}
+.tier.on{border-color:var(--blue);background:var(--blue-tint);}
+.tier .amt{font-family:var(--font-display);font-weight:800;font-size:1.5rem;color:var(--navy);letter-spacing:-.02em;}
+.tier .desc{font-size:.82rem;color:var(--slate);margin-top:4px;line-height:1.35;}
+.tier .freq{font-size:.72rem;color:var(--slate-light);font-weight:600;}
+
+.custom-amt{display:flex;align-items:center;border:2px solid var(--line);border-radius:var(--r);padding:0 18px;margin-top:12px;transition:.2s;}
+.custom-amt.on{border-color:var(--blue);}
+.custom-amt .cur{font-family:var(--font-display);font-weight:800;font-size:1.3rem;color:var(--slate-light);}
+.custom-amt input{flex:1;border:none;outline:none;font-family:var(--font-display);font-weight:800;font-size:1.5rem;color:var(--navy);padding:16px 10px;background:transparent;width:100%;}
+
+.impact-line{display:flex;gap:12px;align-items:center;background:var(--green-tint);border-radius:var(--r);padding:16px 18px;margin-top:20px;}
+.impact-line svg{width:22px;height:22px;color:var(--green-700);flex:none;}
+.impact-line p{margin:0;font-size:.92rem;color:var(--green-700);font-weight:600;}
+
+.summary-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--line-soft);}
+.summary-row:last-of-type{border-bottom:none;}
+.summary-row .k{color:var(--slate);}
+.summary-row .v{font-weight:700;color:var(--navy);}
+.summary-total{display:flex;justify-content:space-between;align-items:center;padding:18px 0 4px;}
+.summary-total .k{font-weight:700;color:var(--navy);}
+.summary-total .v{font-family:var(--font-display);font-weight:800;font-size:2rem;color:var(--blue-700);letter-spacing:-.02em;}
+
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.inp{display:flex;flex-direction:column;gap:7px;}
+.inp.full{grid-column:1/-1;}
+.inp label{font-weight:700;font-size:.85rem;color:var(--navy);}
+.inp input{border:2px solid var(--line);border-radius:12px;padding:.85rem 1rem;font-family:inherit;font-size:1rem;color:var(--ink);outline:none;transition:.2s;background:#fff;}
+.inp input:focus{border-color:var(--blue);}
+.card-mock{border:2px solid var(--line);border-radius:var(--r);padding:18px;margin-top:6px;}
+.card-mock .row{display:flex;gap:12px;margin-top:12px;}
+.pay-methods{display:flex;gap:10px;margin:8px 0 4px;flex-wrap:wrap;}
+.pay-methods .pm{border:2px solid var(--line);border-radius:12px;padding:.6rem 1rem;font-weight:700;font-size:.85rem;color:var(--slate);cursor:pointer;transition:.2s;display:flex;align-items:center;gap:8px;}
+.pay-methods .pm.on{border-color:var(--blue);color:var(--navy);background:var(--blue-tint);}
+
+.success{text-align:center;padding:20px 0;}
+.success .check{width:88px;height:88px;border-radius:50%;background:var(--green-tint);display:grid;place-items:center;margin:0 auto 24px;animation:pop .5s cubic-bezier(.2,.9,.3,1.4);}
+.success .check svg{width:46px;height:46px;color:var(--green);}
+@keyframes pop{from{transform:scale(.4);opacity:0;}to{transform:scale(1);opacity:1;}}
+
+.aside-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;margin-bottom:20px;}
+.aside-card h3{font-size:1.15rem;margin-bottom:6px;}
+.alloc{margin-top:18px;}
+.alloc .row{display:flex;justify-content:space-between;font-size:.9rem;margin-bottom:8px;font-weight:600;color:var(--navy);}
+.alloc .bar{height:10px;border-radius:6px;background:var(--paper-3);overflow:hidden;margin-bottom:16px;}
+.alloc .bar span{display:block;height:100%;border-radius:6px;}
+.trust-list{list-style:none;margin:0;padding:0;}
+.trust-list li{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;font-size:.92rem;color:var(--slate);}
+.trust-list svg{width:20px;height:20px;color:var(--green);flex:none;margin-top:2px;}
+
+@media (max-width:900px){
+  .donate-layout{grid-template-columns:1fr;}
+  .donate-card{position:static;}
+  .tiers{grid-template-columns:1fr 1fr;}
+  .form-grid{grid-template-columns:1fr;}
+}
+@media (max-width:560px){.tiers{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container wide">
+    <nav class="nav">
+      <a class="brand" href="index.html" aria-label="RECI home">
+        <img src="assets/reci-mark.png" alt="RECI">
+        <div class="brand-text"><b>RECI</b><span>Renewed Education</span></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="stories.html">Impact</a></li>
+        <li><a href="get-involved.html">Get Involved</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="donate.html" class="btn btn--primary nav-cta-keep">Support a Child</a>
+        <button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      </div>
+    </nav>
+  </div>
+</header>
+<div class="mobile-menu">
+  <div class="mm-top">
+    <a class="brand" href="index.html"><img src="assets/reci-mark.png" alt="RECI" style="height:40px"><div class="brand-text"><b>RECI</b><span>Renewed Education</span></div></a>
+    <button class="mm-close" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a><a href="stories.html">Impact</a><a href="get-involved.html">Get Involved</a><a href="news.html">News</a><a href="contact.html">Contact</a>
+  <a href="donate.html" class="btn btn--primary btn--block" style="margin-top:20px;font-size:1.1rem">Support a Child</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="container">
+    <div class="inner reveal">
+      <span class="eyebrow">Support a child</span>
+      <h1>Your gift becomes<br>a child's <span class="text-grad">future.</span></h1>
+      <p class="lede">Give once, or monthly — every contribution funds education, learning materials, mentorship and protection for a young person ready to lead. 100% transparency, real impact.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DONATE WIDGET -->
+<section class="section" style="padding-top:24px">
+  <div class="container">
+    <div class="donate-layout">
+      <!-- the card -->
+      <div class="donate-card reveal" style="top:100px">
+        <div class="steps-ind">
+          <div class="s active" data-ind="1"><span class="num">1</span>Amount</div>
+          <div class="line"></div>
+          <div class="s" data-ind="2"><span class="num">2</span>Details</div>
+          <div class="line"></div>
+          <div class="s" data-ind="3"><span class="num">3</span>Done</div>
+        </div>
+
+        <!-- STEP 1 -->
+        <div class="step-pane active" data-pane="1">
+          <div class="field-label" style="margin-top:0">Choose your giving</div>
+          <div class="seg" id="freqSeg">
+            <button class="on" data-freq="once">Give once</button>
+            <button data-freq="monthly">Give monthly</button>
+          </div>
+
+          <div class="field-label">Select an amount
+            <div class="seg small" id="curSeg">
+              <button class="on" data-cur="NGN">₦ NGN</button>
+              <button data-cur="USD">$ USD</button>
+            </div>
+          </div>
+          <div class="tiers" id="tiers"></div>
+
+          <div class="custom-amt" id="customAmt">
+            <span class="cur" id="customCur">₦</span>
+            <input type="number" id="customInput" placeholder="Other amount" min="1" inputmode="numeric">
+          </div>
+
+          <div class="impact-line">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1v.2h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2zM9 18h6M10 22h4"/></svg>
+            <p id="impactText">Provides learning materials for a child for a full term.</p>
+          </div>
+
+          <button class="btn btn--primary btn--lg btn--block" id="toStep2" style="margin-top:24px">Continue
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step-pane" data-pane="2">
+          <div class="field-label" style="margin-top:0">Your details</div>
+          <div class="form-grid">
+            <div class="inp"><label>First name</label><input type="text" placeholder="Amina"></div>
+            <div class="inp"><label>Last name</label><input type="text" placeholder="Bello"></div>
+            <div class="inp full"><label>Email address</label><input type="email" placeholder="you@email.com"></div>
+          </div>
+
+          <div class="field-label">Payment method</div>
+          <div class="pay-methods" id="payMethods">
+            <div class="pm on" data-pm="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg>Card</div>
+            <div class="pm" data-pm="paystack">Paystack</div>
+            <div class="pm" data-pm="transfer">Bank transfer</div>
+          </div>
+          <div class="card-mock">
+            <div class="inp"><label>Card number</label><input type="text" placeholder="0000 0000 0000 0000" inputmode="numeric"></div>
+            <div class="row">
+              <div class="inp" style="flex:1"><label>Expiry</label><input type="text" placeholder="MM / YY"></div>
+              <div class="inp" style="flex:1"><label>CVC</label><input type="text" placeholder="123"></div>
+            </div>
+          </div>
+
+          <div style="background:var(--paper-3);border-radius:var(--r);padding:18px 20px;margin-top:22px">
+            <div class="summary-row"><span class="k">Frequency</span><span class="v" id="sumFreq">One-time</span></div>
+            <div class="summary-row"><span class="k">Designation</span><span class="v">Where most needed</span></div>
+            <div class="summary-total"><span class="k">Total today</span><span class="v" id="sumTotal">₦15,000</span></div>
+          </div>
+
+          <button class="btn btn--green btn--lg btn--block" id="toStep3" style="margin-top:20px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Complete secure donation
+          </button>
+          <button class="btn btn--ghost btn--block" id="backStep1" style="margin-top:10px">Back</button>
+          <p style="text-align:center;font-size:.82rem;color:var(--slate-light);margin-top:14px">🔒 This is a design demo — no real payment is processed.</p>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step-pane" data-pane="3">
+          <div class="success">
+            <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+            <h2 class="section-title" style="font-size:1.9rem">Thank you for renewing a future.</h2>
+            <p class="lede mx-auto" style="margin:14px auto 0">Your <b id="sumFreq2">one-time</b> gift of <b id="sumTotal2">₦15,000</b> is on its way to work. We've sent a receipt to your email — and you'll hear how your support is changing lives.</p>
+            <div class="hero-cta" style="justify-content:center;display:flex;gap:12px;flex-wrap:wrap;margin-top:28px">
+              <a href="stories.html" class="btn btn--primary">See the impact</a>
+              <button class="btn btn--ghost" id="restartDonate">Make another gift</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- aside -->
+      <aside>
+        <div class="aside-card reveal" data-delay="1">
+          <span class="eyebrow is-green">Full transparency</span>
+          <h3 style="margin-top:12px">Where your money goes</h3>
+          <div class="alloc">
+            <div class="row"><span>Education &amp; scholarships</span><span>62%</span></div>
+            <div class="bar"><span style="width:62%;background:var(--blue)"></span></div>
+            <div class="row"><span>Learning materials</span><span>20%</span></div>
+            <div class="bar"><span style="width:20%;background:var(--green)"></span></div>
+            <div class="row"><span>Mentorship &amp; skills</span><span>12%</span></div>
+            <div class="bar"><span style="width:12%;background:var(--gold)"></span></div>
+            <div class="row"><span>Operations</span><span>6%</span></div>
+            <div class="bar"><span style="width:6%;background:var(--navy-600)"></span></div>
+          </div>
+        </div>
+        <div class="aside-card reveal" data-delay="2">
+          <h3>Why give to RECI</h3>
+          <ul class="trust-list" style="margin-top:16px">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Every child is tracked from access to leadership</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Transparent reporting on every naira and dollar</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Cancel or change a monthly gift anytime</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Local teams, deep community trust</li>
+          </ul>
+        </div>
+        <div class="aside-card reveal" data-delay="3" style="background:var(--navy);border:none;color:#fff">
+          <h3 style="color:#fff">Other ways to give</h3>
+          <p style="color:#b9bdd8;font-size:.92rem;margin:8px 0 16px">Prefer to give through your company, a bank transfer, or a legacy gift?</p>
+          <a href="contact.html" class="btn btn--white btn--block">Talk to our team</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container wide">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/reci-logo-full.png" alt="Renewed Education for Children Initiative" style="height:84px;background:#fff;padding:10px 14px;border-radius:14px">
+        <p style="margin-top:18px;max-width:34ch;color:#9499bd">Renewing minds, inspiring hope, and equipping young people to lead positive change across Nigeria and Africa.</p>
+        <div class="social-row" style="margin-top:20px">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7.5 8.6L22 22h-6.8l-5-6.5L4.4 22H1.4l8-9.2L2 2h6.9l4.5 6z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM0 8h5v16H0zM7.5 8H12v2.2h.1c.6-1.1 2.1-2.3 4.3-2.3 4.6 0 5.5 3 5.5 6.9V24h-5v-7.3c0-1.7 0-4-2.4-4s-2.8 1.9-2.8 3.9V24h-5z"/></svg></a>
+        </div>
+      </div>
+      <div><h4>Explore</h4><a href="about.html">About Us</a><a href="programs.html">Programs</a><a href="stories.html">Impact &amp; Stories</a><a href="news.html">News &amp; Events</a></div>
+      <div><h4>Get Involved</h4><a href="donate.html">Donate</a><a href="get-involved.html">Volunteer</a><a href="get-involved.html">Become a Mentor</a><a href="get-involved.html">Partner With Us</a></div>
+      <div><h4>Contact</h4><a href="mailto:hello@reci.org">hello@reci.org</a><a href="tel:+2348000000000">+234 800 000 0000</a><a href="contact.html">Lagos, Nigeria</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Renewed Education for Children Initiative. All rights reserved.</span><span>Renewing Minds, Shaping Futures.</span></div>
+  </div>
+</footer>
+
+<script src="reci.js"></script>
+<script>
+(function(){
+  const TIERS = {
+    once:   { NGN:[5000,15000,35000,75000], USD:[10,30,75,150] },
+    monthly:{ NGN:[2500,7500,20000,50000], USD:[5,15,40,100] }
+  };
+  const IMPACT = [
+    "Provides learning materials for a child for a full term.",
+    "Funds a month of mentorship for a young person.",
+    "Helps keep a child in school for a full term.",
+    "Sponsors a scholarship term for a promising student."
+  ];
+  const SYM = { NGN:'₦', USD:'$' };
+  const state = { freq:'once', cur:'NGN', tier:1, custom:null };
+
+  const tiersEl = document.getElementById('tiers');
+  const customAmt = document.getElementById('customAmt');
+  const customInput = document.getElementById('customInput');
+  const customCur = document.getElementById('customCur');
+  const impactText = document.getElementById('impactText');
+
+  function fmt(n){ return SYM[state.cur] + Number(n).toLocaleString(); }
+  function currentAmount(){
+    if(state.custom!=null && state.custom!=='' && !isNaN(state.custom) && Number(state.custom)>0) return Number(state.custom);
+    return TIERS[state.freq][state.cur][state.tier];
+  }
+  function renderTiers(){
+    const arr = TIERS[state.freq][state.cur];
+    tiersEl.innerHTML = arr.map((amt,i)=>`
+      <button class="tier${(state.custom==null && i===state.tier)?' on':''}" data-tier="${i}">
+        <span class="amt">${fmt(amt)}</span>
+        <span class="freq">${state.freq==='monthly'?'/ month':'one-time'}</span>
+        <div class="desc">${IMPACT[i]}</div>
+      </button>`).join('');
+    tiersEl.querySelectorAll('.tier').forEach(b=>{
+      b.addEventListener('click',()=>{
+        state.tier = +b.dataset.tier; state.custom=null; customInput.value='';
+        customAmt.classList.remove('on');
+        renderTiers(); updateImpact();
+      });
+    });
+    customCur.textContent = SYM[state.cur];
+  }
+  function updateImpact(){
+    if(state.custom!=null && state.custom!=='') {
+      impactText.textContent = "Thank you — your gift goes where children need it most.";
+    } else {
+      impactText.textContent = IMPACT[state.tier];
+    }
+  }
+
+  // frequency
+  document.getElementById('freqSeg').addEventListener('click',e=>{
+    const b=e.target.closest('button'); if(!b) return;
+    state.freq=b.dataset.freq;
+    document.querySelectorAll('#freqSeg button').forEach(x=>x.classList.toggle('on',x===b));
+    renderTiers(); updateImpact();
+  });
+  // currency
+  document.getElementById('curSeg').addEventListener('click',e=>{
+    const b=e.target.closest('button'); if(!b) return;
+    state.cur=b.dataset.cur;
+    document.querySelectorAll('#curSeg button').forEach(x=>x.classList.toggle('on',x===b));
+    renderTiers(); updateImpact();
+  });
+  // custom
+  customInput.addEventListener('input',()=>{
+    state.custom = customInput.value;
+    customAmt.classList.toggle('on', customInput.value!=='');
+    tiersEl.querySelectorAll('.tier').forEach(t=>t.classList.remove('on'));
+    updateImpact();
+  });
+
+  // payment methods
+  document.getElementById('payMethods').addEventListener('click',e=>{
+    const b=e.target.closest('.pm'); if(!b) return;
+    document.querySelectorAll('#payMethods .pm').forEach(x=>x.classList.toggle('on',x===b));
+  });
+
+  // steps
+  function goStep(n){
+    document.querySelectorAll('.step-pane').forEach(p=>p.classList.toggle('active', +p.dataset.pane===n));
+    document.querySelectorAll('.steps-ind .s').forEach(s=>{
+      const i=+s.dataset.ind;
+      s.classList.toggle('active', i===n);
+      s.classList.toggle('done', i<n);
+    });
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  function syncSummary(){
+    const freqTxt = state.freq==='monthly'?'Monthly':'One-time';
+    const total = state.freq==='monthly'? fmt(currentAmount())+' / month' : fmt(currentAmount());
+    document.getElementById('sumFreq').textContent=freqTxt;
+    document.getElementById('sumTotal').textContent=total;
+    document.getElementById('sumFreq2').textContent=state.freq==='monthly'?'monthly':'one-time';
+    document.getElementById('sumTotal2').textContent=total;
+  }
+  document.getElementById('toStep2').addEventListener('click',()=>{ syncSummary(); goStep(2); });
+  document.getElementById('backStep1').addEventListener('click',()=>goStep(1));
+  document.getElementById('toStep3').addEventListener('click',()=>{ syncSummary(); goStep(3); });
+  document.getElementById('restartDonate').addEventListener('click',()=>goStep(1));
+
+  renderTiers(); updateImpact();
+})();
+</script>
+</body>
+</html>

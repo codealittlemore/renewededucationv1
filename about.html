@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — RECI</title>
+<meta name="description" content="The story, mission, vision and values of Renewed Education for Children Initiative.">
+<link rel="icon" type="image/png" href="assets/reci-mark.png">
+<link rel="stylesheet" href="reci.css">
+<style>
+.page-hero{padding:clamp(40px,6vw,72px) 0 clamp(28px,4vw,48px);position:relative;overflow:hidden;}
+.page-hero .blob-1{width:520px;height:520px;background:radial-gradient(circle,rgba(0,175,240,.2),transparent 70%);top:-200px;right:-120px;}
+.page-hero .inner{position:relative;z-index:2;max-width:780px;}
+.page-hero h1{font-size:clamp(2.4rem,1.4rem+3.4vw,4rem);letter-spacing:-.03em;margin:16px 0 18px;}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,72px);align-items:center;}
+.split image-slot{width:100%;aspect-ratio:4/3.4;border-radius:var(--r-xl);box-shadow:var(--shadow-lg);}
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.mv-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.mv{border-radius:var(--r-xl);padding:clamp(32px,4vw,52px);position:relative;overflow:hidden;}
+.mv.mission{background:linear-gradient(135deg,var(--blue),var(--blue-700));color:#fff;}
+.mv.vision{background:linear-gradient(135deg,var(--green),var(--green-700));color:#fff;}
+.mv h3{color:#fff;font-size:1.5rem;margin-bottom:1rem;}
+.mv p{font-size:1.1rem;line-height:1.6;color:rgba(255,255,255,.94);margin:0;}
+.mv .eyebrow{color:rgba(255,255,255,.85);}.mv .eyebrow::before{background:rgba(255,255,255,.6);}
+.team{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.team .m image-slot{width:100%;aspect-ratio:1;border-radius:var(--r-lg);margin-bottom:14px;}
+.team .m b{display:block;font-family:var(--font-display);color:var(--navy);font-size:1.05rem;}
+.team .m span{font-size:.88rem;color:var(--slate);}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
+.stat-card{text-align:center;}
+.stat-card .stat-num{font-size:clamp(2.4rem,1.8rem+1.8vw,3.4rem);}
+.stat-card:nth-child(1) .stat-num{color:var(--blue-700);}
+.stat-card:nth-child(2) .stat-num{color:var(--green-700);}
+.stat-card:nth-child(3) .stat-num{color:var(--gold-600);}
+.stat-card:nth-child(4) .stat-num{color:var(--navy);}
+.stat-card p{margin:.5rem 0 0;color:var(--slate);font-weight:600;}
+@media (max-width:900px){.split{grid-template-columns:1fr;}.values{grid-template-columns:1fr;}.team{grid-template-columns:repeat(2,1fr);}.mv-grid{grid-template-columns:1fr;}.stats-grid{grid-template-columns:repeat(2,1fr);}}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="container wide"><nav class="nav">
+<a class="brand" href="index.html"><img src="assets/reci-mark.png" alt="RECI"><div class="brand-text"><b>RECI</b><span>Renewed Education</span></div></a>
+<ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="programs.html">Programs</a></li><li><a href="stories.html">Impact</a></li><li><a href="get-involved.html">Get Involved</a></li><li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li></ul>
+<div class="nav-cta"><a href="donate.html" class="btn btn--primary nav-cta-keep">Support a Child</a><button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+</nav></div></header>
+<div class="mobile-menu"><div class="mm-top"><a class="brand" href="index.html"><img src="assets/reci-mark.png" alt="RECI" style="height:40px"><div class="brand-text"><b>RECI</b><span>Renewed Education</span></div></a><button class="mm-close" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a><a href="stories.html">Impact</a><a href="get-involved.html">Get Involved</a><a href="news.html">News</a><a href="contact.html">Contact</a><a href="donate.html" class="btn btn--primary btn--block" style="margin-top:20px;font-size:1.1rem">Support a Child</a></div>
+
+<section class="page-hero">
+  <div class="blob blob-1"></div>
+  <div class="container"><div class="inner reveal">
+    <span class="eyebrow">About RECI</span>
+    <h1>We don't see needy children.<br>We see <span class="text-grad">future leaders.</span></h1>
+    <p class="lede">Renewed Education for Children Initiative is a Nigerian non-profit on a mission to renew minds, inspire hope and equip young people with the knowledge and values to build a brighter future — for themselves and their communities.</p>
+  </div></div>
+</section>
+
+<section class="section" style="padding-top:24px">
+  <div class="container"><div class="split">
+    <image-slot id="about-1" class="reveal" placeholder="Drop a photo — students or a classroom moment"></image-slot>
+    <div class="reveal" data-delay="2">
+      <span class="eyebrow is-green">Our story</span>
+      <h2 class="section-title" style="margin:14px 0 18px">It began with one question</h2>
+      <p style="color:var(--slate);font-size:1.05rem">What if a child's circumstances no longer decided their future? RECI was founded on the conviction that potential is evenly distributed, but opportunity is not — and that the gap between the two can be closed.</p>
+      <p style="color:var(--slate);font-size:1.05rem">We started in a single community, helping a handful of children return to the classroom. Today we walk with thousands of young people across Nigeria — from the moment they re-enter school to the day they step up to lead.</p>
+      <p style="color:var(--slate);font-size:1.05rem">Our work is rooted in one belief: renew a mind, and you renew a future.</p>
+    </div>
+  </div></div>
+</section>
+
+<section class="section bg-paper-2">
+  <div class="container"><div class="mv-grid">
+    <div class="mv mission reveal"><span class="eyebrow">Our mission</span><h3 style="margin-top:16px">Renew minds. Inspire hope.</h3><p>To renew minds, inspire hope, and equip young people with the knowledge and values needed to build a brighter future for themselves and their communities.</p></div>
+    <div class="mv vision reveal" data-delay="2"><span class="eyebrow">Our vision</span><h3 style="margin-top:16px">A generation that leads change.</h3><p>To shape a generation of young people with renewed minds, strong values, and a clear sense of purpose, empowered to lead positive change in society.</p></div>
+  </div></div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal"><span class="eyebrow is-center" style="justify-content:center">What we stand for</span><h2 class="section-title" style="margin-top:14px">Our values</h2></div>
+    <div class="values">
+      <div class="card reveal"><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 11 2 2 4-4"/></svg></div><h3 style="font-size:1.25rem">Integrity</h3><p style="color:var(--slate)">Every naira, every promise, every child — held to account with full transparency.</p></div>
+      <div class="card reveal" data-delay="1"><div class="icon-badge is-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></div><h3 style="font-size:1.25rem">Dignity</h3><p style="color:var(--slate)">We lead with hope, not pity — honouring the potential in every young person.</p></div>
+      <div class="card reveal" data-delay="2"><div class="icon-badge is-gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2-6.3-4.6L5.7 21 8 14 2 9.6h7.6z"/></svg></div><h3 style="font-size:1.25rem">Excellence</h3><p style="color:var(--slate)">We don't aim to do enough — we aim to do what genuinely transforms lives.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-navy">
+  <div class="container">
+    <div class="section-head center reveal" style="max-width:680px"><span class="eyebrow is-center" style="justify-content:center;color:var(--gold)">Our impact</span><h2 class="section-title" style="color:#fff;margin-top:14px">Nine years, measured in futures</h2></div>
+    <div class="stats-grid">
+      <div class="stat-card reveal"><div class="stat-num" data-count="12400" data-suffix="+">0</div><p style="color:#b9bdd8">Children supported</p></div>
+      <div class="stat-card reveal" data-delay="1"><div class="stat-num" data-count="2300" data-suffix="+">0</div><p style="color:#b9bdd8">Scholarships</p></div>
+      <div class="stat-card reveal" data-delay="2"><div class="stat-num" data-count="180" data-suffix="+">0</div><p style="color:#b9bdd8">Schools reached</p></div>
+      <div class="stat-card reveal" data-delay="3"><div class="stat-num" data-count="38">0</div><p style="color:#b9bdd8">Communities</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal"><span class="eyebrow is-green is-center" style="justify-content:center">The people</span><h2 class="section-title" style="margin-top:14px">Led by those who believe</h2><p class="lede center">A team of educators, mentors and community builders. (Photos &amp; names are placeholders — share your team and we'll add them.)</p></div>
+    <div class="team">
+      <div class="m reveal"><image-slot id="team1" placeholder="Photo"></image-slot><b>Founder &amp; Director</b><span>Leadership</span></div>
+      <div class="m reveal" data-delay="1"><image-slot id="team2" placeholder="Photo"></image-slot><b>Programs Lead</b><span>Education &amp; Scholarships</span></div>
+      <div class="m reveal" data-delay="2"><image-slot id="team3" placeholder="Photo"></image-slot><b>Mentorship Lead</b><span>Growth &amp; Skills</span></div>
+      <div class="m reveal" data-delay="3"><image-slot id="team4" placeholder="Photo"></image-slot><b>Community Lead</b><span>Outreach &amp; Protection</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-paper-2">
+  <div class="container"><div class="center reveal" style="max-width:680px;margin:0 auto">
+    <h2 class="section-title">Be part of the story</h2>
+    <p class="lede center" style="margin:16px auto 28px">Every leader we raise is raised by a community. There's a place for you in it.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><a href="donate.html" class="btn btn--primary btn--lg">Support a Child</a><a href="get-involved.html" class="btn btn--ghost btn--lg">Get involved</a></div>
+  </div></div>
+</section>
+
+<footer class="site-footer"><div class="container wide"><div class="footer-grid">
+  <div class="footer-brand"><img src="assets/reci-logo-full.png" alt="RECI" style="height:84px;background:#fff;padding:10px 14px;border-radius:14px"><p style="margin-top:18px;max-width:34ch;color:#9499bd">Renewing minds, inspiring hope, and equipping young people to lead positive change across Nigeria and Africa.</p><div class="social-row" style="margin-top:20px"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7.5 8.6L22 22h-6.8l-5-6.5L4.4 22H1.4l8-9.2L2 2h6.9l4.5 6z"/></svg></a><a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM0 8h5v16H0zM7.5 8H12v2.2h.1c.6-1.1 2.1-2.3 4.3-2.3 4.6 0 5.5 3 5.5 6.9V24h-5v-7.3c0-1.7 0-4-2.4-4s-2.8 1.9-2.8 3.9V24h-5z"/></svg></a></div></div>
+  <div><h4>Explore</h4><a href="about.html">About Us</a><a href="programs.html">Programs</a><a href="stories.html">Impact &amp; Stories</a><a href="news.html">News &amp; Events</a></div>
+  <div><h4>Get Involved</h4><a href="donate.html">Donate</a><a href="get-involved.html">Volunteer</a><a href="get-involved.html">Become a Mentor</a><a href="get-involved.html">Partner With Us</a></div>
+  <div><h4>Contact</h4><a href="mailto:hello@reci.org">hello@reci.org</a><a href="tel:+2348000000000">+234 800 000 0000</a><a href="contact.html">Lagos, Nigeria</a></div>
+</div><div class="footer-bottom"><span>© 2026 Renewed Education for Children Initiative. All rights reserved.</span><span>Renewing Minds, Shaping Futures.</span></div></div></footer>
+<script src="image-slot.js"></script><script src="reci.js"></script>
+</body></html>

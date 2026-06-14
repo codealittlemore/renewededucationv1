@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — RECI</title>
+<meta name="description" content="Get in touch with the Renewed Education for Children Initiative team.">
+<link rel="icon" type="image/png" href="assets/reci-mark.png">
+<link rel="stylesheet" href="reci.css">
+<style>
+.page-hero{padding:clamp(40px,6vw,72px) 0 clamp(28px,4vw,48px);position:relative;overflow:hidden;}
+.page-hero .blob-1{width:520px;height:520px;background:radial-gradient(circle,rgba(0,175,240,.18),transparent 70%);top:-200px;left:-120px;}
+.page-hero .inner{position:relative;z-index:2;max-width:780px;}
+.page-hero h1{font-size:clamp(2.4rem,1.4rem+3.4vw,4rem);letter-spacing:-.03em;margin:16px 0 18px;}
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(36px,5vw,64px);align-items:start;}
+.info-card{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 26px;margin-bottom:16px;transition:.2s;}
+.info-card:hover{border-color:var(--blue-tint-2);box-shadow:var(--shadow);}
+.info-card .icon-badge{flex:none;}
+.info-card b{display:block;color:var(--navy);font-family:var(--font-display);font-size:1.05rem;margin-bottom:2px;}
+.info-card a,.info-card span{color:var(--slate);}
+.form-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-xl);box-shadow:var(--shadow-lg);padding:clamp(28px,3vw,40px);}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.inp{display:flex;flex-direction:column;gap:7px;}
+.inp.full{grid-column:1/-1;}
+.inp label{font-weight:700;font-size:.85rem;color:var(--navy);}
+.inp input,.inp select,.inp textarea{border:2px solid var(--line);border-radius:12px;padding:.85rem 1rem;font-family:inherit;font-size:1rem;color:var(--ink);outline:none;transition:.2s;background:#fff;}
+.inp input:focus,.inp select:focus,.inp textarea:focus{border-color:var(--blue);}
+.inp textarea{min-height:130px;resize:vertical;}
+.form-ok{display:none;text-align:center;padding:20px 0;}
+.form-ok.show{display:block;animation:fade .4s ease;}
+@keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+.form-ok .check{width:80px;height:80px;border-radius:50%;background:var(--green-tint);display:grid;place-items:center;margin:0 auto 20px;}
+.form-ok .check svg{width:42px;height:42px;color:var(--green);}
+.map-slot{width:100%;aspect-ratio:21/7;border-radius:var(--r-xl);margin-top:8px;background:linear-gradient(135deg,var(--blue-tint),var(--green-tint));display:grid;place-items:center;border:1px solid var(--line);}
+.map-slot .pin{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--blue-700);font-weight:700;}
+.map-slot .pin svg{width:40px;height:40px;}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr;}.form-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="container wide"><nav class="nav">
+<a class="brand" href="index.html"><img src="assets/reci-mark.png" alt="RECI"><div class="brand-text"><b>RECI</b><span>Renewed Education</span></div></a>
+<ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="programs.html">Programs</a></li><li><a href="stories.html">Impact</a></li><li><a href="get-involved.html">Get Involved</a></li><li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li></ul>
+<div class="nav-cta"><a href="donate.html" class="btn btn--primary nav-cta-keep">Support a Child</a><button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+</nav></div></header>
+<div class="mobile-menu"><div class="mm-top"><a class="brand" href="index.html"><img src="assets/reci-mark.png" alt="RECI" style="height:40px"><div class="brand-text"><b>RECI</b><span>Renewed Education</span></div></a><button class="mm-close" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a><a href="stories.html">Impact</a><a href="get-involved.html">Get Involved</a><a href="news.html">News</a><a href="contact.html">Contact</a><a href="donate.html" class="btn btn--primary btn--block" style="margin-top:20px;font-size:1.1rem">Support a Child</a></div>
+
+<section class="page-hero">
+  <div class="blob blob-1"></div>
+  <div class="container"><div class="inner reveal">
+    <span class="eyebrow">Contact</span>
+    <h1>Let's talk about <span class="text-grad">renewing futures.</span></h1>
+    <p class="lede">Questions, partnerships, media or just a hello — we'd love to hear from you. Reach out and our team will respond within two working days.</p>
+  </div></div>
+</section>
+
+<section class="section" style="padding-top:24px">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal">
+        <span class="eyebrow is-green">Reach us</span>
+        <h2 class="section-title" style="font-size:1.8rem;margin:12px 0 24px">Ways to get in touch</h2>
+        <div class="info-card"><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m2 7 10 6 10-6"/></svg></div><div><b>Email</b><a href="mailto:hello@reci.org">hello@reci.org</a></div></div>
+        <div class="info-card"><div class="icon-badge is-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3.08 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L9 10a16 16 0 0 0 5 5l1.36-1.25a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><b>Phone</b><a href="tel:+2348000000000">+234 800 000 0000</a></div></div>
+        <div class="info-card"><div class="icon-badge is-gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><b>Office</b><span>Lagos, Nigeria</span></div></div>
+        <div class="info-card"><div class="icon-badge is-navy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><b>Hours</b><span>Mon – Fri · 9am – 5pm WAT</span></div></div>
+      </div>
+      <div class="form-card reveal" data-delay="2">
+        <form id="ctForm">
+          <div class="form-grid">
+            <div class="inp"><label>First name</label><input type="text" required placeholder="Amina"></div>
+            <div class="inp"><label>Last name</label><input type="text" required placeholder="Bello"></div>
+            <div class="inp full"><label>Email</label><input type="email" required placeholder="you@email.com"></div>
+            <div class="inp full"><label>I'm reaching out about…</label><select><option>General enquiry</option><option>Donations &amp; sponsorship</option><option>Volunteering</option><option>Partnership</option><option>Media &amp; press</option></select></div>
+            <div class="inp full"><label>Message</label><textarea required placeholder="How can we help?"></textarea></div>
+          </div>
+          <button type="submit" class="btn btn--primary btn--lg btn--block" style="margin-top:20px">Send message</button>
+          <p style="text-align:center;font-size:.82rem;color:var(--slate-light);margin-top:14px">This is a design demo — no message is actually sent.</p>
+        </form>
+        <div class="form-ok" id="ctOk">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <h3>Message sent — thank you!</h3>
+          <p style="color:var(--slate);margin-top:8px">We'll get back to you within two working days.</p>
+        </div>
+      </div>
+    </div>
+    <div class="map-slot reveal" style="margin-top:48px">
+      <div class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Lagos, Nigeria — map placeholder</div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-navy">
+  <div class="container"><div class="center reveal" style="max-width:680px;margin:0 auto">
+    <h2 class="section-title" style="color:#fff">Ready to make a difference today?</h2>
+    <p class="lede center" style="color:#b9bdd8;margin:16px auto 28px">You don't have to wait to help. Support a child's future right now.</p>
+    <a href="donate.html" class="btn btn--gold btn--lg">Support a Child</a>
+  </div></div>
+</section>
+
+<footer class="site-footer"><div class="container wide"><div class="footer-grid">
+  <div class="footer-brand"><img src="assets/reci-logo-full.png" alt="RECI" style="height:84px;background:#fff;padding:10px 14px;border-radius:14px"><p style="margin-top:18px;max-width:34ch;color:#9499bd">Renewing minds, inspiring hope, and equipping young people to lead positive change across Nigeria and Africa.</p><div class="social-row" style="margin-top:20px"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7.5 8.6L22 22h-6.8l-5-6.5L4.4 22H1.4l8-9.2L2 2h6.9l4.5 6z"/></svg></a><a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM0 8h5v16H0zM7.5 8H12v2.2h.1c.6-1.1 2.1-2.3 4.3-2.3 4.6 0 5.5 3 5.5 6.9V24h-5v-7.3c0-1.7 0-4-2.4-4s-2.8 1.9-2.8 3.9V24h-5z"/></svg></a></div></div>
+  <div><h4>Explore</h4><a href="about.html">About Us</a><a href="programs.html">Programs</a><a href="stories.html">Impact &amp; Stories</a><a href="news.html">News &amp; Events</a></div>
+  <div><h4>Get Involved</h4><a href="donate.html">Donate</a><a href="get-involved.html">Volunteer</a><a href="get-involved.html">Become a Mentor</a><a href="get-involved.html">Partner With Us</a></div>
+  <div><h4>Contact</h4><a href="mailto:hello@reci.org">hello@reci.org</a><a href="tel:+2348000000000">+234 800 000 0000</a><a href="contact.html">Lagos, Nigeria</a></div>
+</div><div class="footer-bottom"><span>© 2026 Renewed Education for Children Initiative. All rights reserved.</span><span>Renewing Minds, Shaping Futures.</span></div></div></footer>
+<script src="reci.js"></script>
+<script>document.getElementById('ctForm').addEventListener('submit',e=>{e.preventDefault();document.getElementById('ctForm').style.display='none';document.getElementById('ctOk').classList.add('show');});</script>
+</body></html>
