@@ -26,35 +26,6 @@
 .hero h1 .shape{color:#FBC02D;}
 .hero-sub{font-size:clamp(1.05rem,.98rem + .5vw,1.22rem);color:rgba(255,255,255,.82);max-width:48ch;margin-bottom:2.2rem;line-height:1.6;}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
-.hero-meta{display:flex;gap:32px;margin-top:44px;flex-wrap:wrap;}
-.hero-meta .m b{font-family:var(--font-display);font-size:1.9rem;font-weight:800;color:#fff;display:block;line-height:1;}
-.hero-meta .m span{font-size:.85rem;color:rgba(255,255,255,.68);font-weight:500;}
-.hero-meta .m-div{width:1px;background:rgba(255,255,255,.2);align-self:stretch;}
-
-/* Floating stats card */
-.hero-stats-card{position:absolute;z-index:3;bottom:32px;right:max(32px,calc((100vw - 1340px)/2 + 32px));display:flex;align-items:center;gap:22px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);padding:20px 30px;border-radius:var(--r-lg);box-shadow:var(--shadow-lg);}
-.hsc-item{display:flex;flex-direction:column;}
-.hsc-item strong{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--navy);line-height:1;}
-.hsc-item span{font-size:.8rem;color:var(--slate);margin-top:4px;font-weight:500;}
-.hsc-div{width:1px;height:38px;background:var(--line);}
-
-/* trust strip */
-.trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper-2);}
-.trust .container{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-top:26px;padding-bottom:26px;}
-.trust .label{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--slate-light);font-weight:700;}
-.trust .logos{display:flex;gap:38px;flex-wrap:wrap;align-items:center;}
-.trust .logos span{font-family:var(--font-display);font-weight:700;color:var(--slate-light);font-size:1.05rem;letter-spacing:-.01em;opacity:.8;}
-
-/* challenge */
-.challenge-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,72px);align-items:center;}
-.challenge-stats{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
-.cstat{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;}
-.cstat .n{font-family:var(--font-display);font-weight:800;font-size:clamp(2.2rem,1.6rem+1.4vw,3rem);line-height:1;letter-spacing:-.03em;}
-.cstat:nth-child(1) .n{color:var(--blue-700);}
-.cstat:nth-child(2) .n{color:var(--gold-600);}
-.cstat:nth-child(3) .n{color:var(--green-700);}
-.cstat:nth-child(4) .n{color:var(--navy);}
-.cstat p{font-size:.95rem;color:var(--slate);margin:.5rem 0 0;}
 
 /* journey 3-step — image-card style */
 .journey3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
@@ -116,7 +87,7 @@
 .btn--cta-ghost{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;font-weight:700;font-size:1.05rem;padding:1rem 2rem;border-radius:100px;border:2px solid rgba(255,255,255,.45);background:transparent;color:#fff;cursor:pointer;transition:border-color .2s,transform .2s;}
 .btn--cta-ghost:hover{border-color:#fff;transform:translateY(-2px);}
 
-/* Amina journey timeline */
+/* student journey timeline */
 .amina{background:var(--navy);color:#fff;overflow:hidden;}
 .amina .blob-a{width:600px;height:600px;background:radial-gradient(circle,rgba(0,175,240,.22),transparent 70%);top:-200px;left:-160px;}
 .amina .blob-b{width:520px;height:520px;background:radial-gradient(circle,rgba(251,192,45,.14),transparent 70%);bottom:-220px;right:-120px;}
@@ -230,9 +201,9 @@
 .final-cta .hero-cta{justify-content:center;position:relative;z-index:2;}
 
 @media (max-width:900px){
+  .hero-copy{max-width:100%;}
   .hero-grid{grid-template-columns:1fr;}
   .hero-visual{max-width:520px;margin:0 auto;}
-  .challenge-grid{grid-template-columns:1fr;}
   .journey3{grid-template-columns:1fr;}
   .impact-grid{grid-template-columns:repeat(2,1fr);}
   .amina-head{grid-template-columns:1fr;gap:28px;}
@@ -249,62 +220,19 @@
   .news-grid{grid-template-columns:1fr;}
 }
 @media (max-width:760px){
-  .hero-stats-card{position:static;margin:-40px 24px 0;right:auto;justify-content:space-between;gap:12px;padding:16px 18px;}
   .hero{min-height:auto;}
 }
 @media (max-width:560px){
   .impact-grid,.stats-grid,.gi-grid{grid-template-columns:1fr;}
-  .hero-meta{gap:18px;}
 }
 </style>
-  <script type="module" crossorigin src="/assets/reci-Fw-HH1q2.js"></script>
-  <script type="module" crossorigin src="/assets/image-slot-GfBkIVVm.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/reci-DnpDzbWv.css">
+  <script type="module" crossorigin src="/assets/reci-D1hEQ2ss.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/reci-BuXJabAD.css">
 </head>
 <body>
 
 <!-- ============ HEADER ============ -->
-<header class="site-header">
-  <div class="container wide">
-    <nav class="nav">
-      <a class="brand" href="index.html" aria-label="RECI home">
-        <img src="/assets/reci-mark-D7vyBSnC.png" alt="RECI">
-        <div class="brand-text"><b>RECI</b><span>Renewed Education for Children Initiative</span></div>
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="programs.html">Programs</a></li>
-        <li><a href="stories.html">Impact</a></li>
-        <li><a href="get-involved.html">Get Involved</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <div class="nav-cta">
-        <a href="donate.html" class="btn btn--primary nav-cta-keep">Support a Child</a>
-        <button class="nav-toggle" aria-label="Open menu">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-        </button>
-      </div>
-    </nav>
-  </div>
-</header>
-
-<!-- mobile menu -->
-<div class="mobile-menu">
-  <div class="mm-top">
-    <a class="brand" href="index.html"><img src="/assets/reci-mark-D7vyBSnC.png" alt="RECI" style="height:40px"><div class="brand-text"><b>RECI</b><span>Renewed Education</span></div></a>
-    <button class="mm-close" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-  </div>
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="programs.html">Programs</a>
-  <a href="stories.html">Impact</a>
-  <a href="get-involved.html">Get Involved</a>
-  <a href="news.html">News</a>
-  <a href="contact.html">Contact</a>
-  <a href="donate.html" class="btn btn--primary btn--block" style="margin-top:20px;font-size:1.1rem">Support a Child</a>
-</div>
+<div data-site-header></div>
 
 <!-- ============ HERO ============ -->
 <section class="hero">
@@ -315,62 +243,15 @@
   <div class="container wide" style="width:100%;">
     <div class="hero-grid">
       <div class="hero-copy reveal">
-        <div class="hero-badge"><span class="dot"></span>A movement for <b>young leaders</b> across Nigeria</div>
+        <div class="hero-badge"><span class="dot"></span>Educate <b>• Inspire</b> • Transform </div>
         <h1>Renewing <span class="renew">Minds.</span><br><span class="shape">Shaping Futures.</span></h1>
         <p class="hero-sub">Every child carries untapped potential. Through education, mentorship, scholarships, life skills and protection, we help young people build the confidence, character and purpose to create a brighter future.</p>
         <div class="hero-cta">
-          <a href="donate.html" class="btn btn--primary btn--lg">Support a Child
+          <a href="/donate" class="btn btn--primary btn--lg">Support a Child
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a href="stories.html" class="btn btn--ghost btn--lg" style="color:#fff;border-color:rgba(255,255,255,.4);">Explore Our Impact</a>
+          <a href="/stories" class="btn btn--ghost btn--lg" style="color:#fff;border-color:rgba(255,255,255,.4);">Explore Our Impact</a>
         </div>
-        <div class="hero-meta">
-          <div class="m"><b>12,400+</b><span>Children supported</span></div>
-          <div class="m-div"></div>
-          <div class="m"><b>38</b><span>Communities reached</span></div>
-          <div class="m-div"></div>
-          <div class="m"><b>9</b><span>Years of impact</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="hero-stats-card">
-    <div class="hsc-item"><strong>2,300+</strong><span>Scholarships awarded</span></div>
-    <div class="hsc-div"></div>
-    <div class="hsc-item"><strong>132</strong><span>Schools supported</span></div>
-    <div class="hsc-div"></div>
-    <div class="hsc-item"><strong>94%</strong><span>Stay enrolled</span></div>
-  </div>
-</section>
-
-<!-- ============ TRUST STRIP ============ -->
-<div class="trust">
-  <div class="container wide">
-    <span class="label">In partnership with</span>
-    <div class="logos">
-      <span>State Ministries of Education</span>
-      <span>UNICEF Nigeria</span>
-      <span>Community Schools Network</span>
-      <span>Corporate Partners</span>
-    </div>
-  </div>
-</div>
-
-<!-- ============ THE CHALLENGE ============ -->
-<section class="section">
-  <div class="container">
-    <div class="challenge-grid">
-      <div class="reveal">
-        <span class="eyebrow">The Challenge</span>
-        <h2 class="section-title" style="margin:14px 0 18px">Talent is everywhere.<br>Opportunity is not.</h2>
-        <p class="lede" style="margin-bottom:20px">Across Nigeria, millions of bright, capable children are kept from learning — not by a lack of ability, but by a lack of access. The gap isn't potential. It's opportunity.</p>
-        <p style="color:var(--slate)">RECI exists to close that gap — meeting children where they are, and walking with them from the classroom to confident leadership. This is a story of what's possible, not a portrait of what's lacking.</p>
-      </div>
-      <div class="challenge-stats reveal" data-delay="2">
-        <div class="cstat"><div class="n">1 in 3</div><p>school-age children in Nigeria are out of school</p></div>
-        <div class="cstat"><div class="n">60%</div><p>of out-of-school children are girls</p></div>
-        <div class="cstat"><div class="n">12.4M</div><p>children lack basic learning resources</p></div>
-        <div class="cstat"><div class="n">Rising</div><p>youth vulnerability to exploitation &amp; negative influence</p></div>
       </div>
     </div>
   </div>
@@ -432,7 +313,6 @@
         <div class="ic-body">
           <h3>Education Access</h3>
           <p>Ensuring every child has the opportunity to be in school — and to keep going.</p>
-          <a href="programs.html" class="ic-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
       <div class="impact-card ic-green reveal" data-delay="1">
@@ -444,7 +324,6 @@
         <div class="ic-body">
           <h3>Learning Materials</h3>
           <p>Books, supplies and educational resources placed in eager hands.</p>
-          <a href="programs.html" class="ic-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
       <div class="impact-card ic-gold reveal" data-delay="2">
@@ -456,7 +335,6 @@
         <div class="ic-body">
           <h3>Scholarships</h3>
           <p>Supporting school enrolment and retention so finances never end a future.</p>
-          <a href="programs.html" class="ic-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
       <div class="impact-card ic-navy reveal" data-delay="3">
@@ -468,7 +346,6 @@
         <div class="ic-body">
           <h3>Skills Development</h3>
           <p>Equipping young people with valuable life and career-ready skills.</p>
-          <a href="programs.html" class="ic-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
       <div class="impact-card reveal">
@@ -480,7 +357,6 @@
         <div class="ic-body">
           <h3>Mentorship</h3>
           <p>Guidance and positive role models who believe in every child.</p>
-          <a href="programs.html" class="ic-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
       <div class="impact-card ic-green reveal" data-delay="1">
@@ -492,7 +368,6 @@
         <div class="ic-body">
           <h3>Child Protection</h3>
           <p>Shielding children from abuse, violence, exploitation and trafficking.</p>
-          <a href="programs.html" class="ic-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
       <div class="impact-card ic-gold reveal" data-delay="2">
@@ -504,7 +379,6 @@
         <div class="ic-body">
           <h3>Character Development</h3>
           <p>Building integrity, confidence and sound judgement from within.</p>
-          <a href="programs.html" class="ic-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
       <div class="impact-card ic-navy reveal" data-delay="3">
@@ -516,12 +390,11 @@
         <div class="ic-body">
           <h3>Leadership Development</h3>
           <p>Preparing confident, purpose-driven changemakers for tomorrow.</p>
-          <a href="programs.html" class="ic-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </div>
     <div class="center reveal" style="margin-top:40px">
-      <a href="programs.html" class="btn btn--ghost btn--lg">See all our programs
+      <a href="/programs" class="btn btn--ghost btn--lg">See all our programs
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
@@ -540,55 +413,15 @@
       <h2>A future can change today.<br>Will you help turn the page?</h2>
       <p>Your support puts a child back in the classroom — with the books, teachers, and belief they need to thrive.</p>
       <div class="cta-btns">
-        <a href="donate.html" class="btn--cta-gold">Donate now</a>
-        <a href="get-involved.html" class="btn--cta-ghost">Other ways to help</a>
+        <a href="/donate" class="btn--cta-gold">Donate now</a>
+        <a href="/get-involved" class="btn--cta-ghost">Other ways to help</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ FOOTER ============ -->
-<footer class="site-footer">
-  <div class="container wide">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img src="/assets/reci-logo-full-puY8FC3c.png" alt="Renewed Education for Children Initiative" style="height:84px;background:#fff;padding:10px 14px;border-radius:14px">
-        <p style="margin-top:18px;max-width:34ch;color:#9499bd">Renewing minds, inspiring hope, and equipping young people to lead positive change across Nigeria and Africa.</p>
-        <div class="social-row" style="margin-top:20px">
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-          <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7.5 8.6L22 22h-6.8l-5-6.5L4.4 22H1.4l8-9.2L2 2h6.9l4.5 6z"/></svg></a>
-          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM0 8h5v16H0zM7.5 8H12v2.2h.1c.6-1.1 2.1-2.3 4.3-2.3 4.6 0 5.5 3 5.5 6.9V24h-5v-7.3c0-1.7 0-4-2.4-4s-2.8 1.9-2.8 3.9V24h-5z"/></svg></a>
-          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V5h-3c-2.2 0-4 1.8-4 4v2H7v4h3v8h4v-8h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg></a>
-        </div>
-      </div>
-      <div>
-        <h4>Explore</h4>
-        <a href="about.html">About Us</a>
-        <a href="programs.html">Programs</a>
-        <a href="stories.html">Impact &amp; Stories</a>
-        <a href="news.html">News &amp; Events</a>
-      </div>
-      <div>
-        <h4>Get Involved</h4>
-        <a href="donate.html">Donate</a>
-        <a href="get-involved.html">Volunteer</a>
-        <a href="get-involved.html">Become a Mentor</a>
-        <a href="get-involved.html">Partner With Us</a>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <a href="mailto:hello@reci.org">hello@reci.org</a>
-        <a href="tel:+2348000000000">+234 800 000 0000</a>
-        <a href="contact.html">Lagos, Nigeria</a>
-        <a href="donate.html" class="btn btn--primary" style="margin-top:16px;color:#fff;display:inline-flex">Support a Child</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Renewed Education for Children Initiative. All rights reserved.</span>
-      <span>Renewing Minds, Shaping Futures.</span>
-    </div>
-  </div>
-</footer>
+<div data-site-footer></div>
 
 </body>
 </html>

@@ -3,7 +3,7 @@
    Shared design system. Derived from the brand logo.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500;0,6..72,400;0,6..72,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Source+Sans+3:wght@400;600;700;800&display=swap');
 
 :root{
   /* Brand */
@@ -37,9 +37,9 @@
   --paper-3:#f3f5fa;
 
   /* Type */
-  --font-display:'Bricolage Grotesque', system-ui, sans-serif;
-  --font-body:'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-serif:'Newsreader', Georgia, serif;
+  --font-display:'Merriweather', Georgia, serif;
+  --font-body:'Source Sans 3', system-ui, sans-serif;
+  --font-serif:'Merriweather', Georgia, serif;
 
   /* Radius & shadow */
   --r-sm:10px;
@@ -263,8 +263,9 @@ section{position:relative;}
 .site-footer a:hover{color:#fff;}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:56px;padding-top:24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:.88rem;color:#8a8fb0;}
 .social-row{display:flex;gap:10px;}
-.social-row a{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.07);display:grid;place-items:center;padding:0;}
+.social-row a,.social-row span{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.07);display:grid;place-items:center;padding:0;}
 .social-row a:hover{background:var(--blue);}
+.social-row span{color:#aeb2cf;opacity:.65;cursor:not-allowed;}
 .social-row svg{width:20px;height:20px;}
 
 /* ---------- Motifs (logo-inspired) ---------- */
@@ -286,9 +287,6 @@ section{position:relative;}
   .reveal{opacity:1;transform:none;transition:none;}
   html{scroll-behavior:auto;}
 }
-
-/* ---------- image-slot baseline ---------- */
-image-slot{background:var(--paper-3);border-radius:var(--r-lg);overflow:hidden;display:block;}
 
 /* ---------- Responsive ---------- */
 @media (max-width:1000px){

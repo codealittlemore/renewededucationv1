@@ -11,33 +11,33 @@
 .page-hero .blob-1{width:520px;height:520px;background:radial-gradient(circle,rgba(0,168,90,.16),transparent 70%);top:-200px;right:-120px;}
 .page-hero .inner{position:relative;z-index:2;max-width:780px;}
 .page-hero h1{font-size:clamp(2.4rem,1.4rem+3.4vw,4rem);letter-spacing:-.03em;margin:16px 0 18px;}
-.journey3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:step;}
-.step{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:36px 30px;overflow:hidden;}
-.step::before{counter-increment:step;content:"0" counter(step);position:absolute;top:18px;right:24px;font-family:var(--font-display);font-weight:800;font-size:3.4rem;color:var(--line-soft);line-height:1;}
-.step .bar{position:absolute;left:0;top:0;bottom:0;width:5px;}
-.step.s1 .bar{background:var(--blue);}.step.s2 .bar{background:var(--gold);}.step.s3 .bar{background:var(--green);}
-.step h3{margin:22px 0 .6rem;}.step p{color:var(--slate);margin:0;}
+.journey3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.mv-step{border-radius:var(--r-xl);padding:clamp(32px,4vw,52px);position:relative;overflow:hidden;color:#fff;}
+.mv-step.s-blue{background:linear-gradient(135deg,var(--blue),var(--blue-700));}
+.mv-step.s-gold{background:linear-gradient(135deg,var(--gold),var(--gold-600));color:var(--navy);}
+.mv-step.s-green{background:linear-gradient(135deg,var(--green),var(--green-700));}
+.mv-step .eyebrow{color:rgba(255,255,255,.85);}.mv-step .eyebrow::before{background:rgba(255,255,255,.6);}
+.mv-step.s-gold .eyebrow{color:rgba(34,36,63,.7);}.mv-step.s-gold .eyebrow::before{background:rgba(34,36,63,.4);}
+.mv-step h3{color:#fff;font-size:1.5rem;margin:16px 0 1rem;}
+.mv-step.s-gold h3{color:var(--navy);}
+.mv-step p{font-size:1.1rem;line-height:1.6;color:rgba(255,255,255,.94);margin:0;}
+.mv-step.s-gold p{color:rgba(34,36,63,.82);}
+.mv-step .mv-icon{position:absolute;right:-30px;bottom:-30px;opacity:.16;width:160px;}
 .prog{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,72px);align-items:center;margin-bottom:clamp(48px,7vw,96px);}
 .prog:last-child{margin-bottom:0;}
-.prog image-slot{width:100%;aspect-ratio:4/3.2;border-radius:var(--r-xl);box-shadow:var(--shadow-lg);}
-.prog.flip image-slot{order:2;}
+.prog .program-photo{width:100%;aspect-ratio:4/3.2;border-radius:var(--r-xl);box-shadow:var(--shadow-lg);object-fit:cover;}
+.prog.flip .program-photo{order:2;}
 .prog .num-badge{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--font-display);font-weight:800;color:var(--slate-light);font-size:.9rem;letter-spacing:.06em;margin-bottom:14px;}
 .prog ul{list-style:none;padding:0;margin:18px 0 0;}
 .prog li{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;color:var(--slate);}
 .prog li svg{width:20px;height:20px;color:var(--green);flex:none;margin-top:3px;}
-@media (max-width:900px){.journey3{grid-template-columns:1fr;}.prog{grid-template-columns:1fr;}.prog.flip image-slot{order:0;}}
+@media (max-width:900px){.journey3{grid-template-columns:1fr;}.prog{grid-template-columns:1fr;}.prog.flip .program-photo{order:0;}}
 </style>
-  <script type="module" crossorigin src="/assets/reci-Fw-HH1q2.js"></script>
-  <script type="module" crossorigin src="/assets/image-slot-GfBkIVVm.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/reci-DnpDzbWv.css">
+  <script type="module" crossorigin src="/assets/reci-D1hEQ2ss.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/reci-BuXJabAD.css">
 </head>
 <body>
-<header class="site-header"><div class="container wide"><nav class="nav">
-<a class="brand" href="index.html"><img src="/assets/reci-mark-D7vyBSnC.png" alt="RECI"><div class="brand-text"><b>RECI</b><span>Renewed Education</span></div></a>
-<ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="programs.html">Programs</a></li><li><a href="stories.html">Impact</a></li><li><a href="get-involved.html">Get Involved</a></li><li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li></ul>
-<div class="nav-cta"><a href="donate.html" class="btn btn--primary nav-cta-keep">Support a Child</a><button class="nav-toggle" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
-</nav></div></header>
-<div class="mobile-menu"><div class="mm-top"><a class="brand" href="index.html"><img src="/assets/reci-mark-D7vyBSnC.png" alt="RECI" style="height:40px"><div class="brand-text"><b>RECI</b><span>Renewed Education</span></div></a><button class="mm-close" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a><a href="stories.html">Impact</a><a href="get-involved.html">Get Involved</a><a href="news.html">News</a><a href="contact.html">Contact</a><a href="donate.html" class="btn btn--primary btn--block" style="margin-top:20px;font-size:1.1rem">Support a Child</a></div>
+<div data-site-header></div>
 
 <section class="page-hero">
   <div class="blob blob-1"></div>
@@ -52,61 +52,76 @@
   <div class="container">
     <div class="section-head center reveal"><span class="eyebrow is-center" style="justify-content:center">The model</span><h2 class="section-title" style="margin-top:14px">Access · Growth · Leadership</h2></div>
     <div class="journey3">
-      <div class="step s1 reveal"><span class="bar"></span><div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><h3>Access</h3><p>Enrolment support, learning materials and the safety to keep showing up.</p></div>
-      <div class="step s2 reveal" data-delay="2"><span class="bar"></span><div class="icon-badge is-gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1v.2h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg></div><h3>Growth</h3><p>Mentorship, values, life skills and academic support nurture mind and character.</p></div>
-      <div class="step s3 reveal" data-delay="3"><span class="bar"></span><div class="icon-badge is-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V4a1 1 0 0 1 1-1h11l-2 4 2 4H5"/><path d="M4 22h4"/></svg></div><h3>Leadership</h3><p>Young people emerge confident, responsible and ready to lift others as they rise.</p></div>
+      <div class="mv-step s-blue reveal">
+        <span class="eyebrow">Stage 01</span>
+        <h3>Access</h3>
+        <p>Enrolment support, learning materials and the safety to keep showing up — removing every barrier between a child and their classroom.</p>
+        <svg class="mv-icon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.4"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      </div>
+      <div class="mv-step s-gold reveal" data-delay="2">
+        <span class="eyebrow">Stage 02</span>
+        <h3>Growth</h3>
+        <p>Mentorship, values, life skills and academic support nurture each child's mind and character so they grow with purpose.</p>
+        <svg class="mv-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1v.2h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg>
+      </div>
+      <div class="mv-step s-green reveal" data-delay="3">
+        <span class="eyebrow">Stage 03</span>
+        <h3>Leadership</h3>
+        <p>Young people emerge confident, responsible and purpose-driven — ready to lead, and to lift others as they rise.</p>
+        <svg class="mv-icon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.4"><path d="M4 22V4a1 1 0 0 1 1-1h11l-2 4 2 4H5"/><path d="M4 22h4"/></svg>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="section bg-paper-2">
   <div class="container">
-    <div class="section-head center reveal"><span class="eyebrow is-center" style="justify-content:center">Eight programs</span><h2 class="section-title" style="margin-top:14px">How we walk with a child</h2></div>
+    <div class="section-head center reveal"><span class="eyebrow is-center" style="justify-content:center">Eight programs</span><h2 class="section-title" style="margin-top:14px">Eight ways we walk with a child</h2></div>
 
     <div class="prog reveal">
-      <image-slot id="p1" placeholder="Classroom / enrolment photo"></image-slot>
+      <img class="program-photo" src="https://images.pexels.com/photos/8364026/pexels-photo-8364026.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Children in a Nigerian classroom during enrolment support">
       <div><div class="num-badge">01 · ACCESS</div><h2 class="section-title" style="font-size:2rem">Education Access</h2><p style="color:var(--slate);font-size:1.05rem">We remove the barriers that keep children out of school — and the ones that push them out — so every child has the opportunity to be in class and to stay there.</p>
         <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Enrolment &amp; re-entry support</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Retention tracking &amp; follow-up</li></ul></div>
     </div>
 
     <div class="prog flip reveal">
-      <image-slot id="p2" placeholder="Books &amp; supplies photo"></image-slot>
+      <img class="program-photo" src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=900&q=80" alt="School books and learning supplies for children">
       <div><div class="num-badge">02 · ACCESS</div><h2 class="section-title" style="font-size:2rem">Learning Materials</h2><p style="color:var(--slate);font-size:1.05rem">Books, supplies and educational resources placed directly in eager hands — turning willingness into real, measurable progress.</p>
         <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Textbooks, stationery &amp; uniforms</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Learning kits for new terms</li></ul></div>
     </div>
 
     <div class="prog reveal">
-      <image-slot id="p3" placeholder="Scholarship student photo"></image-slot>
+      <img class="program-photo" src="https://images.pexels.com/photos/8613091/pexels-photo-8613091.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Scholarship student studying in class">
       <div><div class="num-badge">03 · ACCESS</div><h2 class="section-title" style="font-size:2rem">Scholarships</h2><p style="color:var(--slate);font-size:1.05rem">Supporting school enrolment and retention so that finances never decide a child's future. A scholarship is a vote of confidence in a young person's potential.</p>
         <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Termly &amp; full-cycle scholarships</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Merit &amp; need-based pathways</li></ul></div>
     </div>
 
     <div class="prog flip reveal">
-      <image-slot id="p4" placeholder="Skills workshop photo"></image-slot>
+      <img class="program-photo" src="https://images.pexels.com/photos/8613083/pexels-photo-8613083.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Children learning practical skills in a workshop">
       <div><div class="num-badge">04 · GROWTH</div><h2 class="section-title" style="font-size:2rem">Skills Development</h2><p style="color:var(--slate);font-size:1.05rem">Equipping young people with valuable life and career-ready skills — from communication and problem-solving to digital and STEM foundations.</p>
         <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Life skills &amp; financial literacy</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Digital &amp; STEM workshops</li></ul></div>
     </div>
 
     <div class="prog reveal">
-      <image-slot id="p5" placeholder="Mentorship session photo"></image-slot>
+      <img class="program-photo" src="https://images.pexels.com/photos/8613077/pexels-photo-8613077.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Mentor guiding a child during a learning session">
       <div><div class="num-badge">05 · GROWTH</div><h2 class="section-title" style="font-size:2rem">Mentorship</h2><p style="color:var(--slate);font-size:1.05rem">Guidance and positive role models who believe in every child. A mentor helps a young person see — and reach for — what they're truly capable of.</p>
         <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>One-to-one &amp; group mentoring</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Career &amp; academic guidance</li></ul></div>
     </div>
 
     <div class="prog flip reveal">
-      <image-slot id="p6" placeholder="Safe community photo"></image-slot>
+      <img class="program-photo" src="https://images.pexels.com/photos/8613084/pexels-photo-8613084.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Children supported through a safe community education program">
       <div><div class="num-badge">06 · GROWTH</div><h2 class="section-title" style="font-size:2rem">Child Protection</h2><p style="color:var(--slate);font-size:1.05rem">Shielding children from abuse, violence, exploitation and trafficking — because no child can learn or lead without first being safe.</p>
         <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Safeguarding &amp; awareness</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Community protection networks</li></ul></div>
     </div>
 
     <div class="prog reveal">
-      <image-slot id="p7" placeholder="Confident student photo"></image-slot>
+      <img class="program-photo" src="https://images.pexels.com/photos/8613326/pexels-photo-8613326.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Confident student participating in class">
       <div><div class="num-badge">07 · LEADERSHIP</div><h2 class="section-title" style="font-size:2rem">Character Development</h2><p style="color:var(--slate);font-size:1.05rem">Building integrity, confidence and sound judgement from within — the inner foundation on which real leadership is built.</p>
         <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Values &amp; ethics formation</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Confidence &amp; resilience building</li></ul></div>
     </div>
 
     <div class="prog flip reveal">
-      <image-slot id="p8" placeholder="Youth leadership photo"></image-slot>
+      <img class="program-photo" src="https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Young people developing leadership through education">
       <div><div class="num-badge">08 · LEADERSHIP</div><h2 class="section-title" style="font-size:2rem">Leadership Development</h2><p style="color:var(--slate);font-size:1.05rem">Preparing confident, purpose-driven changemakers — young people ready to lead in their schools, communities and beyond.</p>
         <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Student leadership programs</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Youth summits &amp; peer leadership</li></ul></div>
     </div>
@@ -118,14 +133,9 @@
     <span class="eyebrow is-center" style="justify-content:center;color:var(--gold)">Fund a program</span>
     <h2 class="section-title" style="color:#fff;margin-top:14px">Your support powers every one of these</h2>
     <p class="lede center" style="color:#b9bdd8;margin:16px auto 28px">Sponsor a child's full journey — or fund the program closest to your heart.</p>
-    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><a href="donate.html" class="btn btn--gold btn--lg">Support a Child</a><a href="get-involved.html" class="btn btn--white btn--lg">Partner with us</a></div>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><a href="/donate" class="btn btn--gold btn--lg">Support a Child</a><a href="/get-involved" class="btn btn--white btn--lg">Partner with us</a></div>
   </div></div>
 </section>
 
-<footer class="site-footer"><div class="container wide"><div class="footer-grid">
-  <div class="footer-brand"><img src="/assets/reci-logo-full-puY8FC3c.png" alt="RECI" style="height:84px;background:#fff;padding:10px 14px;border-radius:14px"><p style="margin-top:18px;max-width:34ch;color:#9499bd">Renewing minds, inspiring hope, and equipping young people to lead positive change across Nigeria and Africa.</p><div class="social-row" style="margin-top:20px"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7.5 8.6L22 22h-6.8l-5-6.5L4.4 22H1.4l8-9.2L2 2h6.9l4.5 6z"/></svg></a><a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM0 8h5v16H0zM7.5 8H12v2.2h.1c.6-1.1 2.1-2.3 4.3-2.3 4.6 0 5.5 3 5.5 6.9V24h-5v-7.3c0-1.7 0-4-2.4-4s-2.8 1.9-2.8 3.9V24h-5z"/></svg></a></div></div>
-  <div><h4>Explore</h4><a href="about.html">About Us</a><a href="programs.html">Programs</a><a href="stories.html">Impact &amp; Stories</a><a href="news.html">News &amp; Events</a></div>
-  <div><h4>Get Involved</h4><a href="donate.html">Donate</a><a href="get-involved.html">Volunteer</a><a href="get-involved.html">Become a Mentor</a><a href="get-involved.html">Partner With Us</a></div>
-  <div><h4>Contact</h4><a href="mailto:hello@reci.org">hello@reci.org</a><a href="tel:+2348000000000">+234 800 000 0000</a><a href="contact.html">Lagos, Nigeria</a></div>
-</div><div class="footer-bottom"><span>© 2026 Renewed Education for Children Initiative. All rights reserved.</span><span>Renewing Minds, Shaping Futures.</span></div></div></footer>
+<div data-site-footer></div>
 </body></html>
