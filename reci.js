@@ -149,4 +149,42 @@
   } else {
     counters.forEach(el=>{ el.textContent=(el.dataset.prefix||'')+el.dataset.count+(el.dataset.suffix||''); });
   }
+  /* Web3Forms AJAX submit — show success inline instead of redirecting */
+  document.querySelectorAll('form[action*="web3forms"]').forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const origText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          form.innerHTML = `
+            <div style="text-align:center;padding:28px 20px;">
+              <div style="width:56px;height:56px;border-radius:50%;background:var(--green-tint);color:var(--green-700);display:inline-grid;place-items:center;margin-bottom:16px;">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <h3 style="font-size:1.3rem;margin:0 0 8px;color:var(--navy);">Thank you!</h3>
+              <p style="color:var(--slate);margin:0;font-size:.98rem;">Your message has been received. We'll be in touch soon.</p>
+            </div>`;
+        } else {
+          btn.disabled = false;
+          btn.textContent = origText;
+          alert('Something went wrong. Please try again.');
+        }
+      } catch {
+        btn.disabled = false;
+        btn.textContent = origText;
+        alert('Network error. Please check your connection and try again.');
+      }
+    });
+  });
+
 })();
