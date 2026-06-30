@@ -67,7 +67,7 @@
       </div>
       <div><h4>Explore</h4><a href="/about">About Us</a><a href="/programs">Programs</a><a href="/stories">Impact &amp; Stories</a><a href="/news">News &amp; Events</a></div>
       <div><h4>Get Involved</h4><a href="/donate">Donate</a><a href="/get-involved">Volunteer</a><a href="/get-involved">Become a Mentor</a><a href="/get-involved">Partner With Us</a></div>
-      <div><h4>Contact</h4><a href="mailto:hello@reci.org">hello@reci.org</a><a href="tel:+2348000000000">+234 800 000 0000</a><a href="/contact">Lagos, Nigeria</a></div>
+      <div><h4>Contact</h4><a href="mailto:educationrenewed4@gmail.com">educationrenewed4@gmail.com</a><a href="tel:+2348183515952">+234 818 351 5952</a><a href="/contact">Lagos, Nigeria</a></div>
     </div>
     <div class="footer-bottom"><span>© 2026 Renewed Education for Children Initiative for Children Initiative. All rights reserved.</span><span>Renewing Minds, Shaping Futures.</span></div>
   </div>

@@ -32,7 +32,7 @@
 .seg{display:flex;background:var(--paper-3);border-radius:100px;padding:5px;gap:4px;}
 .seg button{flex:1;border:none;background:transparent;padding:.7rem 1rem;border-radius:100px;font-weight:700;font-size:.95rem;color:var(--slate);transition:.25s;}
 .seg button.on{background:#fff;color:var(--navy);box-shadow:var(--shadow-sm);}
-.seg.small{display:inline-flex;width:auto;}
+.seg.small{display:inline-flex;width:auto;flex-wrap:wrap;border-radius:22px;}
 .seg.small button{flex:none;padding:.5rem 1.1rem;}
 
 .field-label{font-weight:700;color:var(--navy);font-size:.92rem;margin:24px 0 12px;display:flex;justify-content:space-between;align-items:center;}
@@ -97,7 +97,7 @@
 }
 @media (max-width:560px){.tiers{grid-template-columns:1fr;}}
 </style>
-  <script type="module" crossorigin src="/assets/reci-D1hEQ2ss.js"></script>
+  <script type="module" crossorigin src="/assets/reci-BClfwMRQ.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/reci-BuXJabAD.css">
 </head>
 <body>
@@ -144,6 +144,8 @@
             <div class="seg small" id="curSeg">
               <button class="on" data-cur="NGN">₦ NGN</button>
               <button data-cur="USD">$ USD</button>
+              <button data-cur="EUR">€ EUR</button>
+              <button data-cur="GBP">£ GBP</button>
             </div>
           </div>
           <div class="tiers" id="tiers"></div>
@@ -167,17 +169,18 @@
         <div class="step-pane" data-pane="2">
           <div class="field-label" style="margin-top:0">Your details</div>
           <div class="form-grid">
-            <div class="inp"><label>First name</label><input type="text" placeholder="First name"></div>
-            <div class="inp"><label>Last name</label><input type="text" placeholder="Last name"></div>
-            <div class="inp full"><label>Email address</label><input type="email" placeholder="you@email.com"></div>
+            <div class="inp"><label for="donorFirstName">First name</label><input id="donorFirstName" type="text" placeholder="First name" required></div>
+            <div class="inp"><label for="donorLastName">Last name</label><input id="donorLastName" type="text" placeholder="Last name" required></div>
+            <div class="inp full"><label for="donorEmail">Email address</label><input id="donorEmail" type="email" placeholder="you@email.com" required></div>
           </div>
 
           <div class="field-label">Payment method</div>
           <div class="bank-details">
             <h3>Bank transfer details</h3>
-            <div class="bank-row"><span>Bank name</span><strong>Access Bank</strong></div>
+            <div class="bank-row"><span>Currency</span><strong id="bankCurrency">Naira</strong></div>
+            <div class="bank-row"><span>Bank name</span><strong id="bankName">United Bank for Africa</strong></div>
             <div class="bank-row"><span>Account name</span><strong>Renewed Education for Children Initiative</strong></div>
-            <div class="bank-row"><span>Account number</span><strong>0000000000</strong></div>
+            <div class="bank-row"><span>Account number</span><strong id="bankAccountNumber">1030552741</strong></div>
             <div class="bank-row"><span>Narration</span><strong>RECI Donation</strong></div>
           </div>
 
@@ -189,7 +192,7 @@
 
           <button class="btn btn--green btn--lg btn--block" id="toStep3" style="margin-top:20px">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Confirm donation details
+            <span>Confirm donation details</span>
           </button>
           <button class="btn btn--ghost btn--block" id="backStep1" style="margin-top:10px">Back</button>
         </div>
@@ -234,16 +237,26 @@
 <script>
 (function(){
   const TIERS = {
-    once:   { NGN:[15000,35000,75000,250000], USD:[10,30,75,150] },
-    monthly:{ NGN:[2500,7500,20000,50000], USD:[5,15,40,100] }
+    once:   { NGN:[15000,35000,75000,250000], USD:[10,30,75,150], EUR:[10,25,70,140], GBP:[10,25,60,120] },
+    monthly:{ NGN:[2500,7500,20000,50000], USD:[5,15,40,100], EUR:[5,15,35,90], GBP:[5,15,30,80] }
   };
+  const WEB3FORMS_ACCESS_KEY = '93c3e02a-926f-4b60-b5d4-0154ecc35ab7';
   const IMPACT = [
     "Provides learning materials for a child for a full term.",
     "Funds a month of mentorship for a young person.",
     "Helps keep a child in school for a full term.",
     "Sponsors a scholarship session for a promising student."
   ];
-  const SYM = { NGN:'₦', USD:'$' };
+  const SYM = { NGN:'₦', USD:'$', EUR:'€', GBP:'£' };
+  const CURRENCY_LABEL = { NGN:'Naira', USD:'USD', EUR:'Euro', GBP:'Pounds' };
+  const ACCOUNTS = {
+    NGN: '1030552741',
+    USD: '3005158426',
+    EUR: '3005158189',
+    GBP: '3005158330'
+  };
+  const BANK_NAME = 'United Bank for Africa';
+  const ACCOUNT_NAME = 'Renewed Education for Children Initiative';
   const state = { freq:'once', cur:'NGN', tier:0, custom:null };
 
   const tiersEl = document.getElementById('tiers');
@@ -251,6 +264,14 @@
   const customInput = document.getElementById('customInput');
   const customCur = document.getElementById('customCur');
   const impactText = document.getElementById('impactText');
+  const donorFirstName = document.getElementById('donorFirstName');
+  const donorLastName = document.getElementById('donorLastName');
+  const donorEmail = document.getElementById('donorEmail');
+  const bankCurrency = document.getElementById('bankCurrency');
+  const bankName = document.getElementById('bankName');
+  const bankAccountNumber = document.getElementById('bankAccountNumber');
+  const confirmBtn = document.getElementById('toStep3');
+  const confirmBtnLabel = confirmBtn.querySelector('span');
 
   function fmt(n){ return SYM[state.cur] + Number(n).toLocaleString(); }
   function currentAmount(){
@@ -273,6 +294,12 @@
       });
     });
     customCur.textContent = SYM[state.cur];
+    syncBankDetails();
+  }
+  function syncBankDetails(){
+    bankCurrency.textContent = CURRENCY_LABEL[state.cur];
+    bankName.textContent = BANK_NAME;
+    bankAccountNumber.textContent = ACCOUNTS[state.cur];
   }
   function updateImpact(){
     if(state.custom!=null && state.custom!=='') {
@@ -322,12 +349,63 @@
     document.getElementById('sumFreq2').textContent=state.freq==='monthly'?'monthly':'one-time';
     document.getElementById('sumTotal2').textContent=total;
   }
+  function validateDetails(){
+    const fields = [donorFirstName, donorLastName, donorEmail];
+    const invalid = fields.find(field => !field.checkValidity());
+    if(invalid){
+      invalid.reportValidity();
+      return false;
+    }
+    return true;
+  }
+  async function submitDonation(){
+    if(!validateDetails()) return;
+    syncSummary();
+
+    const amount = currentAmount();
+    const total = state.freq==='monthly'? fmt(amount)+' / month' : fmt(amount);
+    const formData = new FormData();
+    formData.append('access_key', WEB3FORMS_ACCESS_KEY);
+    formData.append('subject', 'New RECI donation confirmation');
+    formData.append('tag', 'donation');
+    formData.append('from_name', `${donorFirstName.value.trim()} ${donorLastName.value.trim()}`);
+    formData.append('name', `${donorFirstName.value.trim()} ${donorLastName.value.trim()}`);
+    formData.append('email', donorEmail.value.trim());
+    formData.append('frequency', state.freq==='monthly'?'Monthly':'One-time');
+    formData.append('currency', CURRENCY_LABEL[state.cur]);
+    formData.append('amount', String(amount));
+    formData.append('total', total);
+    formData.append('bank_name', BANK_NAME);
+    formData.append('account_name', ACCOUNT_NAME);
+    formData.append('account_number', ACCOUNTS[state.cur]);
+    formData.append('narration', 'RECI Donation');
+    formData.append('message', `Donation confirmed: ${total}. Transfer account: ${BANK_NAME}, ${ACCOUNT_NAME}, ${ACCOUNTS[state.cur]}.`);
+
+    const originalLabel = confirmBtnLabel.textContent;
+    confirmBtn.disabled = true;
+    confirmBtnLabel.textContent = 'Submitting...';
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await res.json();
+      if(!data.success) throw new Error('Donation submission failed');
+      goStep(3);
+    } catch (error) {
+      alert('Something went wrong while submitting your donation details. Please try again.');
+    } finally {
+      confirmBtn.disabled = false;
+      confirmBtnLabel.textContent = originalLabel;
+    }
+  }
   document.getElementById('toStep2').addEventListener('click',()=>{ syncSummary(); goStep(2); });
   document.getElementById('backStep1').addEventListener('click',()=>goStep(1));
-  document.getElementById('toStep3').addEventListener('click',()=>{ syncSummary(); goStep(3); });
+  document.getElementById('toStep3').addEventListener('click',submitDonation);
   document.getElementById('restartDonate').addEventListener('click',()=>goStep(1));
 
-  renderTiers(); updateImpact();
+  renderTiers(); updateImpact(); syncBankDetails();
 })();
 </script>
 </body>
