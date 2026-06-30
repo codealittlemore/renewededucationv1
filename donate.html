@@ -374,6 +374,10 @@
     formData.append('frequency', state.freq==='monthly'?'Monthly':'One-time');
     formData.append('currency', CURRENCY_LABEL[state.cur]);
     formData.append('amount', String(amount));
+    formData.append('donation_amount', String(amount));
+    formData.append('donation_currency', state.cur);
+    formData.append('donation_total', total);
+    formData.append('formatted_amount', fmt(amount));
     formData.append('total', total);
     formData.append('bank_name', BANK_NAME);
     formData.append('account_name', ACCOUNT_NAME);
